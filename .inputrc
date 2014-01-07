@@ -1,6 +1,8 @@
-# This is missing on OSX for some reason...
-"\Ca": beginning-of-line
+$if mode=emacs
+  # This is missing on OSX for some reason...
+  "\Ca": beginning-of-line
 
-# Allow searching from command line (with arrow keys)
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+  # Allow searching from command line (with arrow keys)
+  "\e[A": history-search-backward
+  "\e[B": history-search-forward
+$endif
