@@ -1,0 +1,3 @@
+# Allow searching from command line (with arrow keys)
+"\e[A": history-search-backward
+"\e[B": history-search-forward
