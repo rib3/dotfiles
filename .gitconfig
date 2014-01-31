@@ -1,0 +1,13 @@
+[user]
+	name = Bob Black
+	email = bob.black@sportngin.com
+[color]
+	ui = 1
+[alias]
+  ap = add --patch
+  rp = reset --patch
+  lp = log --patch
+  cv = commit -v
+  ca = commit -v --amend
+[push]
+	default = simple
