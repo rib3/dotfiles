@@ -11,4 +11,4 @@
   cv = commit -v
   ca = commit -v --amend
 [push]
-	default = simple
+	default = current
