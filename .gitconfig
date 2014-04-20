@@ -1,8 +1,8 @@
 [user]
-	name = Bob Black
-	email = bob.black@sportngin.com
+  name = Bob Black
+  email = bob.black@sportngin.com
 [color]
-	ui = 1
+  ui = true
 [alias]
   ap = add --patch
   rp = reset --patch
@@ -11,4 +11,4 @@
   cv = commit -v
   ca = commit -v --amend
 [push]
-	default = current
+  default = current
