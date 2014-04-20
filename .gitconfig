@@ -6,9 +6,11 @@
 [alias]
   ap = add --patch
   rp = reset --patch
-  lp = log --patch
   co = checkout
+  ci = commit
   cv = commit -v
   ca = commit -v --amend
+  d = diff
+  lp = log --patch
 [push]
   default = current
