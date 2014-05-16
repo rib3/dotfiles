@@ -1,3 +1,5 @@
+nmap <Leader>N :NERDTreeFind<CR>
+
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v/(public|node_modules)',
   \}
