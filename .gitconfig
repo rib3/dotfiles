@@ -6,6 +6,7 @@
 [alias]
   ap = add --patch
   rp = reset --patch
+  b = branch
   co = checkout
   ci = commit
   cv = commit -v
