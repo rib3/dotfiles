@@ -13,5 +13,6 @@
   ca = commit -v --amend
   d = diff
   lp = log --patch
+  s = status
 [push]
   default = current
