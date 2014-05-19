@@ -12,6 +12,8 @@
   cv = commit -v
   ca = commit -v --amend
   d = diff
+  do = diff --ours
+  dt = diff --theirs
   lp = log --patch
   s = status
 [push]
