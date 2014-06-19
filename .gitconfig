@@ -15,6 +15,7 @@
   do = diff --ours
   dt = diff --theirs
   lp = log --patch
+  p = push
   s = status
 [push]
   default = current
