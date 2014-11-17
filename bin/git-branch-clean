@@ -1,10 +1,11 @@
 #!/bin/sh
 
-# Ideas taken from SO answer, improvements:
+# Ideas taken from SO answer:
 # * better grep for 'master'
+# * never try to delete the active branch (was part of the master check)
 # * dropped -n1 arg from xargs (not needed), keep xargs to combine lines
 # http://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged
 
-git branch --merged | grep -v "\bmaster\b" | xargs git branch -d
+git branch --merged | grep -v "\bmaster\b\|\*" | xargs git branch -d
 
 exit 0
