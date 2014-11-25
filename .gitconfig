@@ -14,6 +14,7 @@
   d = diff
   do = diff --ours
   dt = diff --theirs
+  f = fetch
   lp = log --patch
   p = push
   s = status
