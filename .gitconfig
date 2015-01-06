@@ -5,6 +5,7 @@
   ui = true
 [alias]
   ap = add --patch
+  ai = add -i
   rp = reset --patch
   b = branch
   co = checkout
