@@ -8,6 +8,7 @@
   rp = reset --patch
   b = branch
   co = checkout
+  cop = checkout --patch
   ci = commit
   cv = commit -v
   ca = commit -v --amend
