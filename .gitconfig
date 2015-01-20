@@ -18,6 +18,7 @@
   dt = diff --theirs
   f = fetch
   lp = log --patch
+  nb = checkout --no-track -b
   p = push
   s = status
 [push]
