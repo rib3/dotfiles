@@ -20,6 +20,7 @@
   nb = checkout --no-track -b
   p = push
   r = reset
+  rh = reset --hard
   rp = reset --patch
   s = status
   sl = stash list
