@@ -19,6 +19,7 @@
   lp = log --patch
   nb = checkout --no-track -b
   p = push
+  r = reset
   rp = reset --patch
   s = status
   sl = stash list
