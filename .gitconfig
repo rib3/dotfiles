@@ -21,5 +21,6 @@
   nb = checkout --no-track -b
   p = push
   s = status
+  sl = stash list
 [push]
   default = current
