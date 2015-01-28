@@ -4,15 +4,14 @@
 [color]
   ui = true
 [alias]
-  ap = add --patch
   ai = add -i
-  rp = reset --patch
+  ap = add --patch
   b = branch
+  ca = commit -v --amend
+  ci = commit
   co = checkout
   cop = checkout --patch
-  ci = commit
   cv = commit -v
-  ca = commit -v --amend
   d = diff
   do = diff --ours
   dt = diff --theirs
@@ -20,6 +19,7 @@
   lp = log --patch
   nb = checkout --no-track -b
   p = push
+  rp = reset --patch
   s = status
   sl = stash list
 [push]
