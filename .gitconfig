@@ -17,6 +17,7 @@
   dt = diff --theirs
   f = fetch
   lp = log --patch
+  mm = "!git fetch && git merge --no-ff origin/master"
   nb = checkout --no-track -b
   p = push
   r = reset
