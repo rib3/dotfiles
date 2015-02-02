@@ -18,7 +18,7 @@
   f = fetch
   lp = log --patch
   mm = "!git fetch && git merge --no-ff origin/master"
-  nb = "!git fetch && echo git checkout --no-track -b"
+  nb = "!git fetch && git checkout --no-track -b"
   p = push
   r = reset
   rh = reset --hard
