@@ -7,6 +7,7 @@
   ai = add -i
   ap = add --patch
   b = branch
+  blv = branch -lvv
   ca = commit -v --amend
   ci = commit
   co = checkout
