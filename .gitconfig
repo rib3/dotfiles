@@ -14,6 +14,7 @@
   cop = checkout --patch
   cv = commit -v
   d = diff
+  dd = diff --word-diff-regex .
   do = diff --ours
   dt = diff --theirs
   f = fetch
