@@ -23,7 +23,7 @@ def main():
         pr = data[0]
     print pr.get('number') or ''
 
-def validate_exists(msg):
+def validate(msg):
     def decorator(func):
         def wrapper(*args, **kwargs):
             v = func(*args, **kwargs)
@@ -36,11 +36,11 @@ def validate_exists(msg):
 def strip_output(*args, **kwargs):
     return check_output(*args, **kwargs).strip()
 
-@validate_exists('Unable to determine branch name')
+@validate('Unable to determine branch name')
 def repo_branch():
     return strip_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'])
 
-@validate_exists('Unable to determine repository path')
+@validate('Unable to determine repository path')
 def repo_path():
     url = strip_output(['git', 'config', '--get', 'remote.origin.url'])
     if not url:
@@ -49,11 +49,11 @@ def repo_path():
     no_git = re.sub('\.git$', '', path)
     return no_git
 
-@validate_exists('Unable to determine repo owner')
+@validate('Unable to determine repo owner')
 def repo_owner():
     return repo_path().split('/')[0]
 
-@validate_exists("{} didn't return a token".format(TOKEN_BIN))
+@validate("{} didn't return a token".format(TOKEN_BIN))
 def github_token():
     try:
         return strip_output([TOKEN_BIN])
