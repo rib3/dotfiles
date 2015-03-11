@@ -36,9 +36,11 @@ def validate_exists(msg):
 def strip_output(*args, **kwargs):
     return check_output(*args, **kwargs).strip()
 
+@validate_exists('Unable to determine branch name')
 def repo_branch():
     return strip_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'])
 
+@validate_exists('Unable to determine repository path')
 def repo_path():
     url = strip_output(['git', 'config', '--get', 'remote.origin.url'])
     if not url:
