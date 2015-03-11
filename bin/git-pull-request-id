@@ -1,0 +1,61 @@
+#!/usr/bin/env python
+
+# Script to get pull-request id for current branch
+# Requires `github_token` command (not provided)
+
+from urllib2 import Request, urlopen
+from urllib import urlencode
+from subprocess import check_output, CalledProcessError
+import re
+import json
+
+TOKEN_BIN='github_token'
+
+def main():
+    url = "https://api.github.com/repos/{}/pulls".format(repo_path())
+    headers = { 'Authorization': ' '.join(["token", github_token()]) }
+    query = urlencode({ "head": ':'.join([repo_owner(), repo_branch()]) })
+    url = '?'.join(filter(None, [url, query]))
+    req = Request(url=url, headers=headers)
+    data = json.loads(urlopen(req).read())
+    pr = {}
+    if len(data):
+        pr = data[0]
+    print pr.get('number') or ''
+
+def strip_output(*args, **kwargs):
+    return check_output(*args, **kwargs).strip()
+
+def repo_branch():
+    return strip_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'])
+
+def repo_path():
+    url = strip_output(['git', 'config', '--get', 'remote.origin.url'])
+    if not url:
+        raise Exception('No git remote')
+    path = url.split(':')[-1]
+    no_git = re.sub('\.git$', '', path)
+    return no_git
+
+def repo_owner():
+    owner = repo_path().split('/')[0]
+    if not owner:
+        raise Exception('Unable to determine repo owner')
+    return owner
+
+def github_token():
+    try:
+        token = strip_output([TOKEN_BIN])
+        if not token:
+            raise Exception("{} didn't return a token".format(TOKEN_BIN))
+        return token
+    except OSError as e:
+        if e.errno == 2:
+            raise Exception("{} command not found".format(TOKEN_BIN))
+        raise
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print e
