@@ -6,6 +6,9 @@ if hash brew 2> /dev/null; then
   fi
 fi
 
+# Git autocomplete for `g` also
+complete -o default -o nospace -F _git g
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
