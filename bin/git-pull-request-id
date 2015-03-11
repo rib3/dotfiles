@@ -23,6 +23,16 @@ def main():
         pr = data[0]
     print pr.get('number') or ''
 
+def validate_exists(msg):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            v = func(*args, **kwargs)
+            if not v:
+                raise Exception(msg)
+            return v
+        return wrapper
+    return decorator
+
 def strip_output(*args, **kwargs):
     return check_output(*args, **kwargs).strip()
 
@@ -37,18 +47,14 @@ def repo_path():
     no_git = re.sub('\.git$', '', path)
     return no_git
 
+@validate_exists('Unable to determine repo owner')
 def repo_owner():
-    owner = repo_path().split('/')[0]
-    if not owner:
-        raise Exception('Unable to determine repo owner')
-    return owner
+    return repo_path().split('/')[0]
 
+@validate_exists("{} didn't return a token".format(TOKEN_BIN))
 def github_token():
     try:
-        token = strip_output([TOKEN_BIN])
-        if not token:
-            raise Exception("{} didn't return a token".format(TOKEN_BIN))
-        return token
+        return strip_output([TOKEN_BIN])
     except OSError as e:
         if e.errno == 2:
             raise Exception("{} command not found".format(TOKEN_BIN))
