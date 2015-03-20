@@ -1,2 +1,4 @@
 --ignore-dir=public
+# ...rails...
+--noignore-dir=javascripts
 --ignore-dir=node_modules
