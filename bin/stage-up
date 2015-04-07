@@ -5,11 +5,14 @@ die() {
   exit 1
 }
 
-ask() {
-  [ -n "$1" ] && echo -n "${1} "
+confirm() {
+  echo -n "run: \`${@}\`? [y/n] "
   read answer
-  [ "${answer}" = "y" -o "${answer}" = "Y" ] && return 0
-  return 1
+  if [ "${answer}" = "y" -o "${answer}" = "Y" ]; then
+    eval ${@}
+    return $?
+  fi
+  return 0
 }
 
 PR=$(git pull-request-id)
@@ -17,6 +20,6 @@ PR=$(git pull-request-id)
 
 op stage-up "${PR}" || die "unable to stage up"
 
-ask "deploy to staging?" && soyuz deploy staging
+confirm soyuz deploy
 
 exit 1
