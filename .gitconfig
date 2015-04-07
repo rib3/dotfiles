@@ -20,6 +20,7 @@
   f = fetch
   lp = log --patch
   mm = !git fetch && git merge --no-ff origin/master
+  mnf = merge --no-ff
   # Includes hack to avoid (re)passing full args to end of command
   nb = !git fetch && sh -c 'git checkout --no-track -b $1 origin/master' -
   p = push
