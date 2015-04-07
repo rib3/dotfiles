@@ -1,0 +1,13 @@
+#!/bin/sh
+
+die() {
+  [ -n "$1" ] && echo "${1}"
+  exit 1
+}
+
+PR=$(git pull-request-id)
+[ -z $PR ] && die "No PR found."
+
+op stage-up "${PR}" || die "unable to stage up"
+
+exit 1
