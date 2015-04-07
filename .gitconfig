@@ -10,6 +10,7 @@
   blv = branch -lvv
   ca = commit -v --amend
   ci = commit
+  cli = clean -di
   co = checkout
   cop = checkout --patch
   cv = commit -v
