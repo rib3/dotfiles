@@ -1,13 +1,22 @@
-#!/bin/sh
+#!/bin/bash
 
 die() {
   [ -n "$1" ] && echo "${1}"
   exit 1
 }
 
+ask() {
+  [ -n "$1" ] && echo -n "${1} "
+  read answer
+  [ "${answer}" = "y" -o "${answer}" = "Y" ] && return 0
+  return 1
+}
+
 PR=$(git pull-request-id)
 [ -z $PR ] && die "No PR found."
 
 op stage-up "${PR}" || die "unable to stage up"
+
+ask "deploy to staging?" && soyuz deploy staging
 
 exit 1
