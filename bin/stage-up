@@ -21,5 +21,3 @@ PR=$(git pull-request-id)
 op stage-up "${PR}" || die "unable to stage up"
 
 confirm soyuz deploy
-
-exit 1
