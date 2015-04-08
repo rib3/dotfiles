@@ -6,7 +6,7 @@ die() {
 }
 
 confirm() {
-  echo -n "run: \`${@}\`? [y/n] "
+  echo -n "run: \`${@}\`? [y/N] "
   read answer
   if [ "${answer}" = "y" -o "${answer}" = "Y" ]; then
     eval ${@}
