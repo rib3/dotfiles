@@ -20,4 +20,6 @@ PR=$(git pull-request-id)
 
 op stage-up "${PR}" || die "unable to stage up"
 
+confirm opsicle monitor staging
+
 confirm soyuz deploy
