@@ -9,6 +9,8 @@ if [ -z "$1" ]; then
   die "missing branch name"
 fi
 
+BASE="${2:-origin/master}"
+
 git fetch || die
 
-git checkout --no-track -b $1 origin/master
+git checkout --no-track -b "${1}" "${BASE}"
