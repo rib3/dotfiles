@@ -1,4 +1,12 @@
+--ignore-file=is:newrelic_agent.log
 --ignore-dir=public
 # ...rails...
 --noignore-dir=javascripts
 --ignore-dir=node_modules
+--ignore-dir=bower_components
+--ignore-dir=coverage
+--ignore-dir=log
+--ignore-dir=migrate_archive
+--ignore-dir=db
+--ignore-dir=app/assets/js/tmpl
+--ignore-dir=.tmp
