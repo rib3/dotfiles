@@ -1,0 +1,14 @@
+#!/bin/sh
+
+die() {
+  [ -n "$1" ] && echo "${1}"
+  exit 1
+}
+
+if [ -z "$1" ]; then
+  die "missing branch name"
+fi
+
+git fetch || die
+
+git checkout --no-track -b $1 origin/master
