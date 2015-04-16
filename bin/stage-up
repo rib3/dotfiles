@@ -18,6 +18,9 @@ confirm() {
 PR=$(git pull-request-id)
 [ -z $PR ] && die "No PR found."
 
+UNPUSHED=$(git cherry)
+[ ! -z "${UNPUSHED}" ] && die "Unpushed commits"
+
 op stage-up "${PR}" || die "unable to stage up"
 
 confirm opsicle monitor staging
