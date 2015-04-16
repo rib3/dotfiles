@@ -31,3 +31,5 @@
   sl = stash list
 [push]
   default = current
+[color "branch"]
+  upstream = bold blue
