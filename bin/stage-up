@@ -1,28 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env python
 
-die() {
-  [ -n "$1" ] && echo "${1}"
-  exit 1
-}
+from subprocess import check_call, check_output
+import subprocess
+import sys
+import re
 
-confirm() {
-  echo -n "run: \`${@}\`? [y/N] "
-  read answer
-  if [ "${answer}" = "y" -o "${answer}" = "Y" ]; then
-    eval ${@}
-    return $?
-  fi
-  return 0
-}
+def die(msg):
+    if msg:
+        print msg
+    sys.exit(1)
 
-PR=$(git pull-request-id)
-[ -z $PR ] && die "No PR found."
+def confirm(cmd):
+    # using raw_input for now...
+    answer = raw_input("run: {} [y/N] ".format(' '.join(cmd)))
+    if re.match('^[yY]', answer):
+        check_call(cmd)
+    return True
 
-UNPUSHED=$(git cherry)
-[ ! -z "${UNPUSHED}" ] && die "Unpushed commits"
+def get_pull_request():
+    pr = check_output(['git', 'pull-request-id'])
+    if not pr:
+        die('No PR found.')
+    return pr
 
-op stage-up "${PR}" || die "unable to stage up"
+def check_unpushed():
+    unpushed = check_output(['git', 'cherry'])
+    if unpushed:
+        pushed = confirm(['git', 'push'])
+        if not pushed:
+            die("Can't continue with unpushed commits")
 
-confirm opsicle monitor staging
+def main():
+    pr = get_pull_request()
+    check_unpushed()
+    check_call(['op', 'stage-up', pr])
+    confirm(['opsicle', 'monitor', 'staging'])
+    confirm(['soyuz', 'deploy'])
 
-confirm soyuz deploy
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print e
