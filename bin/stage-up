@@ -14,7 +14,7 @@ def confirm(cmd):
     answer = raw_input("run: {} [y/N] ".format(' '.join(cmd)))
     if re.match('^[yY]', answer):
         check_call(cmd)
-    return True
+        return True
 
 def get_pull_request():
     pr = check_output(['git', 'pull-request-id'])
