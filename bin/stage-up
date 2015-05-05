@@ -39,7 +39,7 @@ def main():
     check_unpushed()
     check_call(['op', 'stage-up', pr])
     confirm(['opsicle', 'monitor', 'staging'])
-    confirm(['soyuz', 'deploy'])
+    confirm(['soyuz', 'deploy', 'staging'])
 
 if __name__ == "__main__":
     try:
