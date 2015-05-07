@@ -38,7 +38,7 @@ def main():
     pr = get_pull_request()
     check_unpushed()
     check_call(['op', 'stage-up', pr])
-    confirm(['opsicle', 'monitor', 'staging'])
+    check_call(['opsicle', 'monitor', 'staging'])
     confirm(['soyuz', 'deploy', 'staging'])
 
 if __name__ == "__main__":
