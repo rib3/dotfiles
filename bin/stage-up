@@ -22,7 +22,7 @@ def confirm(cmd):
         return True
 
 def get_pull_request():
-    pr = check_output(['git', 'pull-request-id'])
+    pr = check_output(['git', 'pull-request-id']).strip()
     if not pr:
         die('No PR found.')
     return pr
