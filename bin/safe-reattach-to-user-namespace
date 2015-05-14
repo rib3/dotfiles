@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# minorly tweaked https://github.com/jimeh/dotfiles/commit/3838db8
+
+# If reattach-to-user-namespace is not available, just run the command.
+if [ -n "$(command -v reattach-to-user-namespace)" ]; then
+  exec reattach-to-user-namespace $@
+else
+  exec "$@"
+fi
