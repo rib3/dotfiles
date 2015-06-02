@@ -30,6 +30,7 @@ def get_pull_request():
 def check_unpushed():
     unpushed = check_output(['git', 'cherry'])
     if unpushed:
+        print('Unstaged commits')
         pushed = confirm(['git', 'push'])
         if not pushed:
             die("Can't continue with unpushed commits")
