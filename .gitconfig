@@ -19,6 +19,7 @@
   dt = diff --theirs
   f = fetch
   lp = log --patch
+  m = !git checkout master && git pull
   mm = !git fetch && git merge --no-ff origin/master
   mnf = merge --no-ff
   nb = new-branch
