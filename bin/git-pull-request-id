@@ -14,7 +14,7 @@ TOKEN_BIN='github_token'
 def main():
     url = "https://api.github.com/repos/{}/pulls".format(repo_path())
     headers = { 'Authorization': ' '.join(["token", github_token()]) }
-    query = urlencode({ "head": ':'.join([repo_owner(), repo_branch()]) })
+    query = urlencode({ 'state': 'all', "head": ':'.join([repo_owner(), repo_branch()]) })
     url = '?'.join(filter(None, [url, query]))
     req = Request(url=url, headers=headers)
     data = json.loads(urlopen(req).read())
