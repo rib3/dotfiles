@@ -3,7 +3,7 @@
 # Script to get pull-request id for current branch
 # Requires `github_token` command (not provided)
 
-from miscutils import *
+from cmdutils import *
 
 def main():
     query = { 'state': 'all', 'head': repo_branch_head() }
