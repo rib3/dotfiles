@@ -7,7 +7,7 @@ from miscutils import *
 import json
 
 def main():
-    query = { 'state': 'all', "head": ':'.join([repo_owner(), repo_branch()]) }
+    query = { 'state': 'all', 'head': repo_branch_head() }
     data = pulls(repo_path(), query)
     pr = {}
     if len(data):

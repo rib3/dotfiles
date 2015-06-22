@@ -40,6 +40,9 @@ def repo_path():
 def repo_owner():
     return repo_path().split('/')[0]
 
+def repo_branch_head():
+    return ':'.join([repo_owner(), repo_branch()])
+
 @validate("{} didn't return a token".format(TOKEN_BIN))
 def github_token():
     try:
