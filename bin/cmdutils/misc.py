@@ -8,7 +8,7 @@ __all__ = ('die', 'validate', 'strip_output', 'confirm')
 
 def die(msg):
     if msg:
-        print msg
+        print >> sys.stderr, msg
     sys.exit(1)
 
 def validate(msg):
