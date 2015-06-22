@@ -8,10 +8,6 @@
 from subprocess import check_call, check_output
 from miscutils import *
 
-@validate('No PR found.')
-def get_pull_request():
-    return strip_output(['git', 'pull-request-id'])
-
 def check_unpushed():
     unpushed = check_output(['git', 'cherry'])
     if unpushed:
@@ -21,14 +17,17 @@ def check_unpushed():
             die("Can't continue with unpushed commits")
 
 def main():
-    pr = get_pull_request()
-    check_unpushed()
-    check_call(['op', 'stage-up', pr])
-    check_call(['opsicle', 'monitor', 'staging'])
-    confirm(['soyuz', 'deploy', 'staging'])
+    pr = pull_request_id()
+    if pr:
+        check_unpushed()
+        check_call(['op', 'stage-up', pr])
+        check_call(['opsicle', 'monitor', 'staging'])
+        confirm(['soyuz', 'deploy', 'staging'])
+    else:
+        raise Exception('no pull request found')
 
 if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        print e
+        die(e)
