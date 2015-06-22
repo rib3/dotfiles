@@ -4,15 +4,12 @@
 # Requires `github_token` command (not provided)
 
 from miscutils import *
-import json
 
 def main():
     query = { 'state': 'all', 'head': repo_branch_head() }
     data = pulls(repo_path(), query)
-    pr = {}
-    if len(data):
-        pr = data[0]
-    print pr.get('number') or ''
+    for pr in data[:1]:
+        print pr.get('number', '')
 
 if __name__ == "__main__":
     try:
