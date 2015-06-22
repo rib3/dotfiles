@@ -32,3 +32,9 @@ def request(path, query):
 def pulls(repo, query):
     path = "/repos/{}/pulls".format(repo_path())
     return request(path, query)
+
+def pull_request_id():
+    query = { 'state': 'all', 'head': repo_branch_head() }
+    data = pulls(repo_path(), query)
+    for pr in data[:1]:
+        return pr.get('number')
