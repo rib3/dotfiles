@@ -6,9 +6,15 @@ from urllib2 import Request, urlopen
 from urllib import urlencode
 from subprocess import check_output
 import re
+import sys
 import json
 
 TOKEN_BIN='github_token'
+
+def die(msg):
+    if msg:
+        print msg
+    sys.exit(1)
 
 def validate(msg):
     def decorator(func):
@@ -22,6 +28,13 @@ def validate(msg):
 
 def strip_output(*args, **kwargs):
     return check_output(*args, **kwargs).strip()
+
+def confirm(cmd):
+    # using raw_input for now...
+    answer = raw_input("run: {} [y/N] ".format(' '.join(cmd)))
+    if re.match('^[yY]', answer):
+        check_call(cmd)
+        return True
 
 @validate('Unable to determine branch name')
 def repo_branch():

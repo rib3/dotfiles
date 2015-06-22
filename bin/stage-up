@@ -6,20 +6,7 @@
 # soyuz - http://github.com/sportngin/soyuz
 
 from subprocess import check_call, check_output
-import sys
-import re
-
-def die(msg):
-    if msg:
-        print msg
-    sys.exit(1)
-
-def confirm(cmd):
-    # using raw_input for now...
-    answer = raw_input("run: {} [y/N] ".format(' '.join(cmd)))
-    if re.match('^[yY]', answer):
-        check_call(cmd)
-        return True
+from miscutils import *
 
 def get_pull_request():
     pr = check_output(['git', 'pull-request-id']).strip()
