@@ -16,8 +16,10 @@
   d = diff
   dd = diff --word-diff-regex .
   do = diff --ours
+  dom = diff origin/master
   dt = diff --theirs
   f = fetch
+  fdom = !git fetch && git dom
   lp = log --patch
   lo = log --oneline
   m = !git checkout master && git pull
