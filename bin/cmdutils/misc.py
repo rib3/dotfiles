@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from subprocess import check_output
+from subprocess import check_call, check_output
 import re
 import sys
 
