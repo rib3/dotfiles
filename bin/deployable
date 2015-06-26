@@ -27,7 +27,7 @@ def main():
 
 def ticket_ids(s):
     # Simple, but seems to work ok
-    return set(re.findall('[A-Z]+-\d+', s))
+    return sorted(set(re.findall('[A-Z]+-\d+', s)))
 
 if __name__ == "__main__":
     try:
