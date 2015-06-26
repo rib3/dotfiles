@@ -6,7 +6,7 @@
 # soyuz - http://github.com/sportngin/soyuz
 
 from subprocess import check_call, check_output
-from miscutils import *
+from cmdutils import *
 
 def check_unpushed():
     unpushed = check_output(['git', 'cherry'])
@@ -20,7 +20,7 @@ def main():
     pr = pull_request_id()
     if pr:
         check_unpushed()
-        check_call(['op', 'stage-up', pr])
+        check_call(['op', 'stage-up', str(pr)])
         check_call(['opsicle', 'monitor', 'staging'])
         confirm(['soyuz', 'deploy', 'staging'])
     else:
