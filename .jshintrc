@@ -1,0 +1,26 @@
+{
+  "asi": true,
+  "devel": true, // console
+  "undef": true,
+  "predef": {
+    "_": true,
+    "$": true,
+    // jasmine
+    "describe": true,
+    "ddescribe": true,
+    "xdescribe": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true,
+    "it": true,
+    "iit": true,
+    "xit": true,
+    "expect": true,
+    "spyOn": true,
+    // angular
+    "angular": true,
+    "module": true,
+    "inject": true
+  }
+}
