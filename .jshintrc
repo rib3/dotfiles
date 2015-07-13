@@ -2,6 +2,7 @@
   "asi": true,
   "devel": true, // console
   "undef": true,
+  "-W033": true, // semicolon after 'use strict'
   "predef": {
     "_": true,
     "$": true,
