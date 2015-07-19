@@ -21,6 +21,10 @@ def main():
     if pr:
         check_unpushed()
         check_call(['op', 'stage-up', str(pr)])
+        # op stage-up won't exit NON zero when `git status` is dirty
+        # https://github.com/sportngin/octopolo/issues/64
+        if not on_staging_branch():
+            raise Exception("op stage-up didn't complete")
         check_call(['opsicle', 'monitor', 'staging'])
         confirm(['soyuz', 'deploy', 'staging'])
     else:
