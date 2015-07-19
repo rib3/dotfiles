@@ -33,6 +33,7 @@
   puo = push -u origin
   r = reset
   rh = reset --hard
+  ro = rebase origin
   rp = reset --patch
   s = status
   sl = stash list
