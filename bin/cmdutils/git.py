@@ -8,11 +8,14 @@ from misc import validate, strip_output
 import json
 import re
 
-__all__ = ('repo_branch', 'repo_path', 'repo_owner', 'repo_branch_head')
+__all__ = ('repo_branch', 'on_staging_branch', 'repo_path', 'repo_owner', 'repo_branch_head')
 
 @validate('Unable to determine branch name')
 def repo_branch():
     return strip_output(['git', 'rev-parse', '--abbrev-ref', 'HEAD'])
+
+def on_staging_branch():
+    return re.match('^staging\.', repo_branch())
 
 @validate('Unable to determine repository path')
 def repo_path():
