@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+from tempfile import NamedTemporaryFile
+from subprocess import check_call, check_output
+import sys
+
+def mysql_args(args):
+    return ['-u', 'root']
+
+def rename(old, new):
+    print "copy: {} -> {}".format(old, new)
+    check_call(['mysql', '-u', 'root', '-e', 'CREATE DATABASE {}'.format(new)])
+    dump = NamedTemporaryFile(suffix='.sql', delete=False)
+    print "file: {}".format(dump.name)
+    check_call(['mysqldump', '-u', 'root', old], stdout=dump)
+    dump.flush()
+    dump.seek(0)
+    check_call(['mysql', '-u', 'root', new], stdin=dump)
+
+rename(*sys.argv[1:3])
