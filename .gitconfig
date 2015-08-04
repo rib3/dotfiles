@@ -37,6 +37,8 @@
   rp = reset --patch
   s = status
   sl = stash list
+  ss = stash save
+  ssp = stash save --patch
 [push]
   default = current
 [color "branch"]
