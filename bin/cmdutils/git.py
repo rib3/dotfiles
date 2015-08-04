@@ -2,13 +2,20 @@
 
 # Requires `github_token` command (not provided)
 
+from misc import validate, strip_output
 from urllib2 import Request, urlopen
 from urllib import urlencode
-from misc import validate, strip_output
+from subprocess import check_call, check_output
 import json
 import re
 
-__all__ = ('repo_branch', 'on_staging_branch', 'repo_path', 'repo_owner', 'repo_branch_head')
+__all__ = ('check_status', 'repo_branch', 'on_staging_branch', 'repo_path', 'repo_owner', 'repo_branch_head')
+
+def check_status():
+    try:
+        check_call(['git', 'diff-files', '--quiet'])
+    except:
+        raise Exception('Git status dirty')
 
 @validate('Unable to determine branch name')
 def repo_branch():
