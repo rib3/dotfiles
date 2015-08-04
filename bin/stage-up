@@ -25,6 +25,7 @@ def main():
         # https://github.com/sportngin/octopolo/issues/64
         if not on_staging_branch():
             raise Exception("op stage-up didn't complete")
+        check_status()
         check_call(['opsicle', 'monitor', 'staging'])
         confirm(['soyuz', 'deploy', 'staging'])
     else:
