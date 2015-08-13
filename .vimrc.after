@@ -1,5 +1,8 @@
 nmap <Leader>N :NERDTreeFind<CR>
 
+" Disable background color on tab bar
+hi TabLineFill term=NONE cterm=NONE gui=NONE
+
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v/(public|node_modules)',
   \}
