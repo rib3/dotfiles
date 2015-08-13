@@ -5,6 +5,7 @@
 --ignore-dir=node_modules
 --ignore-dir=bower_components
 --ignore-dir=coverage
+--ignore-file=match:coverage
 --ignore-dir=log
 --ignore-dir=migrate_archive
 --ignore-dir=db
