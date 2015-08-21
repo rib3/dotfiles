@@ -37,6 +37,7 @@
   rp = reset --patch
   s = status
   sl = stash list
+  sp = stash pop
   ss = stash save
   ssp = stash save --patch
 [push]
