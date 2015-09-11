@@ -1,20 +1,11 @@
 #!/usr/bin/env python
 
-from datetime import datetime
+from cmdutils.git import GitVersion
 from subprocess import check_output
 from os import path
 import requests
 import json
 import sys
-
-class GitVersion:
-    def __init__(self):
-        describe = check_output(['git', 'describe', '--all', '--long', '--dirty']).strip()
-        self.describe = describe.split('/', 2)[1]
-        self.timestamp = datetime.now()
-
-    def __str__(self):
-        return '.'.join([self.describe, self.timestamp.isoformat()])
 
 def headers():
     try:

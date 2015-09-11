@@ -2,6 +2,7 @@
 
 # Requires `github_token` command (not provided)
 
+from datetime import datetime
 from misc import validate, strip_output
 from urllib2 import Request, urlopen
 from urllib import urlencode
@@ -9,7 +10,8 @@ from subprocess import check_call, check_output
 import json
 import re
 
-__all__ = ('check_status', 'repo_branch', 'on_staging_branch', 'repo_path', 'repo_owner', 'repo_branch_head')
+__all__ = ('check_status', 'repo_branch', 'on_staging_branch', 'repo_path', 'repo_owner',
+           'repo_branch_head', 'GitVersion')
 
 def check_status():
     try:
@@ -39,3 +41,12 @@ def repo_owner():
 
 def repo_branch_head():
     return ':'.join([repo_owner(), repo_branch()])
+
+class GitVersion:
+    def __init__(self):
+        describe = check_output(['git', 'describe', '--all', '--long', '--dirty']).strip()
+        self.describe = describe.split('/', 2)[1]
+        self.timestamp = datetime.now()
+
+    def __str__(self):
+        return '.'.join([self.describe, self.timestamp.isoformat()])
