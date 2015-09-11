@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+
+from datetime import datetime
+from subprocess import check_output
+from os import path
+import requests
+import json
+import sys
+
+class GitVersion:
+    def __init__(self):
+        describe = check_output(['git', 'describe', '--all', '--long', '--dirty']).strip()
+        self.describe = describe.split('/', 2)[1]
+        self.timestamp = datetime.now()
+
+    def __str__(self):
+        return '.'.join([self.describe, self.timestamp.isoformat()])
+
+def headers():
+    try:
+        with open('tmp/json_compare/.headers') as f:
+            lines = [line.strip().split(': ', 2) for line in f]
+            return dict(lines)
+    except:
+        pass
+
+def urls():
+    try:
+        with open('tmp/json_compare/.urls') as f:
+            return json.loads(f.read())
+    except IOError:
+        raise Exception('DIE')
+    except TypeError:
+        raise Exception('Problem with format of url file')
+
+def url_by_name(name):
+    try:
+        return urls()[name]
+    except KeyError:
+        raise Exception('url not found {}'.format(name))
+
+def format_json(js):
+    return json.dumps(js, sort_keys=True, indent=4)
+
+def main():
+    url = url_by_name(sys.argv[1])
+    r = requests.get(url, headers=headers())
+    version(r.json())
+
+def version(data):
+    fname = '.'.join([str(GitVersion()), 'json'])
+    fname = path.join('tmp', 'json_compare', fname)
+    with open(fname, 'w') as f:
+        f.write(format_json(data))
+
+
+if __name__ == '__main__':
+    main()
