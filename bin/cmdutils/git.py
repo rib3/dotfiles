@@ -22,6 +22,10 @@ def check_status():
     except:
         raise Exception('Git status dirty')
 
+def commits_since_master():
+    s = check_output(['git', 'rev-list', '--count', 'origin/master...HEAD']).strip()
+    return int(s)
+
 def dirty():
     try:
         check_status()
@@ -56,6 +60,7 @@ class GitVersion:
         # I want the individual pieces, or else I'd use `git-describe`
         self.branch = repo_branch()
         self.commit = last_commit()
+        self.count = commits_since_master()
         self._dirty = dirty()
         self.timestamp = datetime.now()
 
@@ -64,6 +69,6 @@ class GitVersion:
             return 'dirty'
 
     def __str__(self):
-        parts = filter(None, [self.branch, self.commit, self.dirty()])
+        parts = filter(None, [self.branch, str(self.count), self.commit, self.dirty()])
         base = '-'.join(parts)
         return '.'.join([base, self.timestamp.isoformat()])
