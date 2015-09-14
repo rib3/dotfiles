@@ -9,9 +9,12 @@ import requests
 import json
 import sys
 
+def file_path(fname):
+    return path.join('tmp/json_compare', fname)
+
 @contextlib.contextmanager
 def open_config(fname):
-    with open(path.join('tmp/json_compare', fname)) as f:
+    with open(file_path(fname)) as f:
         yield f
 
 def headers():
