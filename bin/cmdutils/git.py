@@ -13,11 +13,20 @@ import re
 __all__ = ('check_status', 'repo_branch', 'on_staging_branch', 'repo_path', 'repo_owner',
            'repo_branch_head', 'GitVersion')
 
+def last_commit():
+    return check_output(['git', 'log', '--format=%h', '-n', '1']).strip()
+
 def check_status():
     try:
         check_call(['git', 'diff-files', '--quiet'])
     except:
         raise Exception('Git status dirty')
+
+def dirty():
+    try:
+        check_status()
+    except:
+        return True
 
 @validate('Unable to determine branch name')
 def repo_branch():
@@ -44,9 +53,17 @@ def repo_branch_head():
 
 class GitVersion:
     def __init__(self):
-        describe = check_output(['git', 'describe', '--all', '--long', '--dirty']).strip()
-        self.describe = describe.split('/', 2)[1]
+        # I want the individual pieces, or else I'd use `git-describe`
+        self.branch = repo_branch()
+        self.commit = last_commit()
+        self._dirty = dirty()
         self.timestamp = datetime.now()
 
+    def dirty(self):
+        if self._dirty:
+            return 'dirty'
+
     def __str__(self):
-        return '.'.join([self.describe, self.timestamp.isoformat()])
+        parts = filter(None, [self.branch, self.commit, self.dirty()])
+        base = '-'.join(parts)
+        return '.'.join([base, self.timestamp.isoformat()])
