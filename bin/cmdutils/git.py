@@ -59,13 +59,17 @@ class GitVersion:
         # I want the individual pieces, or else I'd use `git-describe`
         self.branch = repo_branch()
         self.commit = last_commit()
-        self.count = commits_since_master()
+        self._count = commits_since_master()
         self._dirty = dirty()
+
+    def count(self):
+        if self._count:
+            return str(self._count)
 
     def dirty(self):
         if self._dirty:
             return 'dirty'
 
     def __str__(self):
-        parts = [self.branch, str(self.count), self.commit, self.dirty()]
+        parts = [self.branch, self.count(), self.commit, self.dirty()]
         return '-'.join(filter(None, parts))
