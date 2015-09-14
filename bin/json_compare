@@ -52,12 +52,16 @@ def main():
 
 def write_version(name, data, version):
     timestamp = datetime.now().isoformat()
-    fname = '.'.join([name, str(version), timestamp, 'json'])
-    fname = path.join('tmp', 'json_compare', fname)
-    with open(fname, 'w') as f:
+    path = output_path(name, version, timestamp)
+    with open(path, 'w') as f:
         f.write(format_json(data))
-    print 'wrote', fname
-    return fname
+    print 'wrote', path
+    return path
+
+def output_path(name, version=None, timestamp=None):
+    parts = [name, str(version), timestamp, 'json']
+    fname = '.'.join(filter(None, parts))
+    return file_path(fname)
 
 if __name__ == '__main__':
     main()
