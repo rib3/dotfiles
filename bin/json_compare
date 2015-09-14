@@ -51,6 +51,7 @@ def main():
     version = GitVersion()
     output = write_version(name, r.json(), version)
     compare = find_latest_master(name)
+    print "## request-time:", r.elapsed.total_seconds()
     print "-----comparing-----"
     print compare
     print output
