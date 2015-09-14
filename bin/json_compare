@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from cmdutils.git import GitVersion
+from datetime import datetime
 from subprocess import check_output
 from os import path
 import requests
@@ -41,7 +42,8 @@ def main():
     fname = write_version(name, r.json(), version)
 
 def write_version(name, data, version):
-    fname = '.'.join([name, str(version), 'json'])
+    timestamp = datetime.now().isoformat()
+    fname = '.'.join([name, str(version), timestamp, 'json'])
     fname = path.join('tmp', 'json_compare', fname)
     with open(fname, 'w') as f:
         f.write(format_json(data))

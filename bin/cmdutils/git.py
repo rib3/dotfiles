@@ -2,7 +2,6 @@
 
 # Requires `github_token` command (not provided)
 
-from datetime import datetime
 from misc import validate, strip_output
 from urllib2 import Request, urlopen
 from urllib import urlencode
@@ -62,13 +61,11 @@ class GitVersion:
         self.commit = last_commit()
         self.count = commits_since_master()
         self._dirty = dirty()
-        self.timestamp = datetime.now()
 
     def dirty(self):
         if self._dirty:
             return 'dirty'
 
     def __str__(self):
-        parts = filter(None, [self.branch, str(self.count), self.commit, self.dirty()])
-        base = '-'.join(parts)
-        return '.'.join([base, self.timestamp.isoformat()])
+        parts = [self.branch, str(self.count), self.commit, self.dirty()]
+        return '-'.join(filter(None, parts))
