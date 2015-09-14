@@ -4,13 +4,19 @@ from cmdutils.git import GitVersion
 from datetime import datetime
 from subprocess import check_output
 from os import path
+import contextlib
 import requests
 import json
 import sys
 
+@contextlib.contextmanager
+def open_config(fname):
+    with open(path.join('tmp/json_compare', fname)) as f:
+        yield f
+
 def headers():
     try:
-        with open('tmp/json_compare/.headers') as f:
+        with open_config('.headers') as f:
             lines = [line.strip().split(': ', 2) for line in f]
             return dict(lines)
     except:
@@ -18,7 +24,7 @@ def headers():
 
 def urls():
     try:
-        with open('tmp/json_compare/.urls') as f:
+        with open_config('.urls') as f:
             return json.loads(f.read())
     except IOError:
         raise Exception('DIE')
