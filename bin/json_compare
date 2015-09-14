@@ -34,16 +34,19 @@ def format_json(js):
     return json.dumps(js, sort_keys=True, indent=4)
 
 def main():
-    url = url_by_name(sys.argv[1])
+    name = sys.argv[1]
+    url = url_by_name(name)
     r = requests.get(url, headers=headers())
-    version(r.json())
+    version = GitVersion()
+    fname = write_version(name, r.json(), version)
 
-def version(data):
-    fname = '.'.join([str(GitVersion()), 'json'])
+def write_version(name, data, version):
+    fname = '.'.join([name, str(version), 'json'])
     fname = path.join('tmp', 'json_compare', fname)
     with open(fname, 'w') as f:
         f.write(format_json(data))
-
+    print 'wrote', fname
+    return fname
 
 if __name__ == '__main__':
     main()
