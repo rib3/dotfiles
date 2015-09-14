@@ -2,11 +2,12 @@
 
 from cmdutils.git import GitVersion
 from datetime import datetime
-from subprocess import check_output
+from subprocess import check_call, CalledProcessError
 from os import path
 import contextlib
-import requests
+import glob
 import json
+import requests
 import sys
 
 def file_path(fname):
@@ -48,7 +49,17 @@ def main():
     url = url_by_name(name)
     r = requests.get(url, headers=headers())
     version = GitVersion()
-    fname = write_version(name, r.json(), version)
+    output = write_version(name, r.json(), version)
+    compare = find_latest_master(name)
+    print "-----comparing-----"
+    print compare
+    print output
+    print "-----" * 4
+    try:
+        check_call(['git', 'diff', '--no-index', compare, output])
+        print "No changes"
+    except CalledProcessError:
+        print "Output differs"
 
 def write_version(name, data, version):
     timestamp = datetime.now().isoformat()
@@ -62,6 +73,13 @@ def output_path(name, version=None, timestamp=None):
     parts = [name, str(version), timestamp, 'json']
     fname = '.'.join(filter(None, parts))
     return file_path(fname)
+
+def find_latest_master(name):
+    master_glob = output_path(name, 'master-*')
+    files = glob.glob(master_glob)
+    if len(files):
+        files.sort(key=path.getmtime)
+        return files[-1]
 
 if __name__ == '__main__':
     main()
