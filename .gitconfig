@@ -38,8 +38,10 @@
   s = status
   sl = stash list
   sp = stash pop
-  ss = stash save
-  ssp = stash save --patch
+  ss = stash show
+  ssp = stash show --patch
+  sv = stash save
+  svp = stash save --patch
 [push]
   default = current
 [color "branch"]
