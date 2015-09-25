@@ -7,3 +7,6 @@
 # http://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged
 
 git branch --merged master | grep -v "\bmaster\b\|\*" | xargs git branch -d
+
+set -f # Disable glob expansion (I WANT brace expansion)
+git branch --list {deployable,staging}.* | xargs git branch -D
