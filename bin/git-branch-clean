@@ -9,4 +9,4 @@
 git branch --merged master | grep -v "\bmaster\b\|\*" | xargs git branch -d
 
 set -f # Disable glob expansion (I WANT brace expansion)
-git branch --list {deployable,staging}.* | xargs git branch -D
+git branch --list {deployable,staging}.* | grep -v "\*" | xargs git branch -D
