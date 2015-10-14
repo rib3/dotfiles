@@ -14,11 +14,13 @@
   cop = checkout --patch
   cv = commit -v
   d = diff
+  dc = diff --cached
   dd = diff --word-diff-regex .
   do = diff --ours
   dom = diff origin/master
   ds = diff --stat
   dt = diff --theirs
+  dw = diff --word-diff
   f = fetch
   fdom = !git fetch && git dom
   flpm = !git fetch && git lpm
