@@ -1,0 +1,15 @@
+#!/bin/bash -x
+
+die() {
+  [ -n "${1}" ] && echo -e "${1}"
+  exit 1
+}
+
+echo "updating brew"
+brew update || die
+
+# Use `brew pin` to prevent formulae from upgrading
+# `brew list --pinned`
+brew upgrade --all || die
+
+exit 0
