@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -d /Applications ]; then
+  exec open /Applications/Google\ Chrome.app "${@}"
+fi
