@@ -1,5 +1,6 @@
 [user]
   name = Bob Black
+  email = git@riblack.com
 [color]
   ui = true
 [alias]
