@@ -51,3 +51,5 @@
   default = current
 [color "branch"]
   upstream = bold blue
+[hub]
+  protocol = ssh
