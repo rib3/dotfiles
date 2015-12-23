@@ -26,10 +26,12 @@
   f = fetch
   fco = !git fetch && git co
   fdom = !git fetch && git dom
+  flom = !git fetch && git lom
   flpm = !git fetch && git lpm
+  lo = log --oneline
+  lom = !git lo origin/master...
   lp = log --patch
   lpm = !git lp origin/master...
-  lo = log --oneline
   m = !git checkout master && git pull
   mm = !git fetch && git merge --no-ff origin/master
   mnf = merge --no-ff
