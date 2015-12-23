@@ -24,6 +24,7 @@
   dt = diff --theirs
   dw = diff --word-diff
   f = fetch
+  fco = !git fetch && git co
   fdom = !git fetch && git dom
   flpm = !git fetch && git lpm
   lp = log --patch
