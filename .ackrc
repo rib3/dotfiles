@@ -10,4 +10,5 @@
 --ignore-dir=migrate_archive
 --ignore-dir=db
 --ignore-dir=app/assets/js/tmpl
+--ignore-dir=release
 --ignore-dir=.tmp
