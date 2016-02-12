@@ -1,3 +1,6 @@
+# ~/bin first!
+PATH="${HOME}/bin:$PATH"
+
 # Mega command history...
 HISTSIZE=100000
 
@@ -6,5 +9,3 @@ export HOMEBREW_NO_EMOJI=1
 
 alias g='git'
 alias vi='vim'
-
-PATH="${HOME}/bin:$PATH"
