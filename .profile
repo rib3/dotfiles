@@ -1,3 +1,5 @@
+PATH="/usr/local/sbin:${PATH}"
+
 # ~/bin first!
 PATH="${HOME}/bin:$PATH"
 
