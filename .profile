@@ -32,5 +32,5 @@ if hash gdircolors 2>/dev/null; then
 fi
 
 function vg {
-  vagrant ssh -c "cd /vagrant; ${@}"
+  vagrant ssh -c "cd /vagrant; $*"
 }
