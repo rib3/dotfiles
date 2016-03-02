@@ -30,3 +30,7 @@ if hash gdircolors 2>/dev/null; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
+
+function vg {
+  vagrant ssh -c "cd /vagrant; ${@}"
+}
