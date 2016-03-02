@@ -15,6 +15,7 @@ export HOMEBREW_NO_EMOJI=1
 
 alias g='git'
 alias vi='vim'
+alias ld='ls -lrt ~/Downloads'
 
 # colors for (gnu) ls, dir, and *grep
 if hash gdircolors 2>/dev/null; then
