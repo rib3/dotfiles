@@ -117,13 +117,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 316 605 485 0 0 1920 1057 </string>
+	<string>440 709 606 456 0 0 2560 1417 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>970 768 620 392 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>246 102 1670 955 0 0 1920 1057 </string>
+	<string>1016 30 1558 1387 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>607 606 570 451 0 0 1920 1057 </string>
+	<string>113 523 942 894 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>296 606 585 451 0 0 1920 1057 </string>
+	<string>0 0 1131 877 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>1914 482 570 452 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_1BA2D6CA-A15A-4AB8-957E-DFE2FBD3C47F</key>
 	<true/>
 	<key>New Bookmarks</key>
