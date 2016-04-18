@@ -860,6 +860,8 @@
 			<string>/Users/bblack</string>
 		</dict>
 	</array>
+	<key>NoSyncPermissionToShowTip</key>
+	<true/>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
