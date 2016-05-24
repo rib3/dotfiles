@@ -1,0 +1,47 @@
+#!/bin/bash
+
+I=0
+
+while [ true ]; do
+  # Check count on each loop because stashes may be dropped
+  CUR_STASH_COUNT=$(git stash list | wc -l)
+  if [ "${CUR_STASH_COUNT}" -le "${I}" ]; then
+    echo "no more stashes"
+    exit 0
+  fi
+
+  STASH="stash@{${I}}"
+  git stash show "${STASH}"
+  git stash list -n $((${I} + 1 )) | tail -n 1
+  echo -n "action [A,D,P,p,q,d,n]? "
+  read -n 1 INPUT
+  echo
+  case "${INPUT}" in
+    A)
+      echo git stash apply "${STASH}"
+      # does not increment
+      ;;
+    D)
+      git stash drop "${STASH}"
+      ;;
+    P)
+      git stash pop "${STASH}"
+      ;;
+    d)
+      git stash show --patch "${STASH}"
+      ;;
+    q)
+      exit 0
+      ;;
+    p)
+      if [ "${I}" -eq 0 ]; then
+        echo "Already at first stash"
+      else
+        I=$((${I} - 1))
+      fi
+      ;;
+    n)
+      I=$((${I} + 1))
+      ;;
+  esac
+done
