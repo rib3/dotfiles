@@ -18,7 +18,7 @@ while [ true ]; do
   echo
   case "${INPUT}" in
     A)
-      echo git stash apply "${STASH}"
+      git stash apply "${STASH}"
       # does not increment
       ;;
     D)
