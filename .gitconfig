@@ -30,10 +30,13 @@
   fdom = !git fetch && git dom
   flom = !git fetch && git lom
   flpm = !git fetch && git lpm
+  flsm = !git fetch && git lsm
   lo = log --oneline
   lom = !git lo origin/master...
   lp = log --patch
   lpm = !git lp origin/master...
+  ls = log --stat
+  lsm = !git ls origin/master...
   m = !git checkout master && git pull
   mm = !git fetch && git merge --no-ff origin/master
   mnf = merge --no-ff
