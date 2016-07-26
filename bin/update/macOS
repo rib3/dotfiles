@@ -1,6 +1,5 @@
 #!/bin/bash -ex
 
-echo "updating brew"
 brew update
 
 # Use `brew pin` to prevent formulae from upgrading
