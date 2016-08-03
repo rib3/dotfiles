@@ -14,8 +14,7 @@ while [ true ]; do
   git stash show "${STASH}"
   git stash list -n $((${I} + 1 )) | tail -n 1
   echo -n "action [A,D,P,p,q,d,n]? "
-  read -n 1 INPUT
-  echo
+  read INPUT
   case "${INPUT}" in
     A)
       git stash apply "${STASH}"
