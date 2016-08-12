@@ -17,6 +17,11 @@ alias g='git'
 alias vi='vim'
 alias ld='ls -lrt ~/Downloads'
 
+# alias GNU find (defaults to cwd for path...)
+if hash gfind; then
+  alias find=gfind
+fi
+
 # colors for (gnu) ls, dir, and *grep
 if hash gdircolors 2>/dev/null; then
   test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
