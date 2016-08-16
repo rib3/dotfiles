@@ -31,6 +31,7 @@
   flom = !git fetch && git lom
   flpm = !git fetch && git lpm
   flsm = !git fetch && git lsm
+  ft = fetch --tags # when a tag is updated
   lo = log --oneline
   lom = !git lo origin/master...
   lp = log --patch
