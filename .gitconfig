@@ -42,6 +42,7 @@
   mm = !git fetch && git merge --no-ff origin/master
   mnf = merge --no-ff
   nb = new-branch
+  pf = pull --ff-only
   pl = pull
   pu = push
   puo = push -u origin
