@@ -13,3 +13,4 @@
 --ignore-dir=release
 --ignore-dir=tmp
 --ignore-dir=.tmp
+--ignore-dir=venv
