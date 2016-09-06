@@ -1,7 +1,6 @@
 --ignore-file=is:newrelic_agent.log
 --ignore-dir=public
-# ...rails...
---noignore-dir=javascripts
+--noignore-dir=javascripts # rails...
 --ignore-dir=node_modules
 --ignore-dir=bower_components
 --ignore-dir=coverage
