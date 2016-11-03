@@ -1,4 +1,5 @@
 # goaccess log file settings for s3
 date-format %d/%b/%Y
 time-format %T
+# http://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html
 log-format %^ %^ [%d:%t %^] %h %^ %^ %^ %^ "%r" %s %^ %b %^ %^ %^ "%^" "%u" %^
