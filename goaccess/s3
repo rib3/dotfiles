@@ -1,4 +1,4 @@
 # goaccess log file settings for s3
 date-format %d/%b/%Y
 time-format %T
-log-format %^ %^ [%d:%t %^] %h %^ %^ %^ %^ "%^ %r %^" %s %^ %b %^ %^ %^ "%^" "%u" %^
+log-format %^ %^ [%d:%t %^] %h %^ %^ %^ %^ "%r" %s %^ %b %^ %^ %^ "%^" "%u" %^
