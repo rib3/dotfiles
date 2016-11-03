@@ -1,5 +1,11 @@
 # goaccess settings for s3 logs
 # http://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html
+#
+# sample s3 `log-format` (overly condensed?)
+# https://github.com/allinurl/goaccess/blob/6d13aaa/config/goaccess.conf#L91
+# log-format %^[%d:%t %^] %h %^"%r" %s %^ %b %^ %L %^ "%R" "%u"
+# would need to drop %z from time-format to use
+
 date-format %d/%b/%Y
 time-format %H:%M:%S %z
 log-format %^ %^ [%d:%t] %h %^ %^ %^ %^ "%r" %s %^ %b %^ %L %^ "%R" "%u" %^
