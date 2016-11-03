@@ -15,11 +15,8 @@ cat LOG_FILE | goaccess -p ~/dotfiles/goaccess/s3
 cat * | goaccess -p ~/dotfiles/goaccess/s3
 ```
 
-#### errors
-
-`cat *` may run into `Argument list too long`
-
-The error from `cat` will be hidden by the `goaccess` screen takeover
+> `cat *` may run into `Argument list too long`
+> The error from `cat` will be hidden by the `goaccess` screen takeover
 
 ### lots of files
 
