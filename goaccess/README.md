@@ -4,24 +4,24 @@ Notes for [goacccess](https://goaccess.io), a web log analyzer
 
 ## s3 logs
 
-#### single log file, use s3 config
+### single log file, use s3 config
 ```
 cat LOG_FILE | goaccess -p ~/dotfiles/goaccess/s3
 ```
 
-#### some files
+### some files
 
 ```
 cat * | goaccess -p ~/dotfiles/goaccess/s3
 ```
 
-##### errors
+#### errors
 
 `cat *` may run into `Argument list too long`
 
 The error from `cat` will be hidden by the `goaccess` screen takeover
 
-#### lots of files
+### lots of files
 
 ```
 # `-exec ... +` will combine args (similar to xargs)
@@ -29,7 +29,7 @@ The error from `cat` will be hidden by the `goaccess` screen takeover
 find . -type f -exec cat {} + | goaccess -p ~/dotfiles/goaccess/s3
 ```
 
-#### lots of files by filename
+### lots of files by filename
 ```
 find -name "2016-11-03*" -exec cat {} + | goaccess -p ~/dotfiles/goaccess/s3
 ```
