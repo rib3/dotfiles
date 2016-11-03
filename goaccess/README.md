@@ -11,8 +11,6 @@ cat LOG_FILE | goaccess -p ~/dotfiles/goaccess/s3
 
 #### some files
 
-Also see: [tons of files](#tons of files)
-
 ```
 cat * | goaccess -p ~/dotfiles/goaccess/s3
 ```
