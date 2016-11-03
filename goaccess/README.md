@@ -4,6 +4,10 @@ Notes for [goacccess](https://goaccess.io), a web log analyzer
 
 ## s3 logs
 
+> versions after 1.0.2 should enable `--log-format=AWSS3`
+
+> https://github.com/allinurl/goaccess/commit/906812f
+
 ### single log file, use s3 config
 ```
 cat LOG_FILE | goaccess -p ~/dotfiles/goaccess/s3
