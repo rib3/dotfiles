@@ -31,7 +31,7 @@ The error from `cat` will be hidden by the `goaccess` screen takeover
 find . -type f -exec cat {} + | goaccess -p ~/dotfiles/goaccess/s3
 ```
 
-#### tons of files by filename
+#### lots of files by filename
 ```
 find -name "2016-11-03*" -exec cat {} + | goaccess -p ~/dotfiles/goaccess/s3
 ```
