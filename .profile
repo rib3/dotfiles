@@ -14,7 +14,6 @@ HISTSIZE=100000
 export HOMEBREW_NO_EMOJI=1
 
 alias g='git'
-alias vi='vim'
 alias l.='ls -d .*'
 alias la='ls -a'
 alias ld='lrt ~/Downloads'
@@ -22,6 +21,7 @@ alias lf='ls -FA'
 alias ll='ls -lA'
 alias lrs='ls -lrS'
 alias lrt='ls -lrt'
+alias vi='vim'
 
 # alias GNU find (defaults to cwd for path...)
 if hash gfind; then
