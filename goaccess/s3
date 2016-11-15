@@ -12,4 +12,4 @@
 
 date-format %d/%b/%Y
 time-format %H:%M:%S %z
-log-format %^ %^ [%d:%t] %h %^ %^ %^ %^ "%r" %s %^ %b %^ %L %^ "%R" "%u" %^
+log-format %^ %v [%d:%t] %h %^ %^ %^ %^ "%r" %s %^ %b %^ %L %^ "%R" "%u" %^
