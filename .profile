@@ -15,7 +15,10 @@ export HOMEBREW_NO_EMOJI=1
 
 alias g='git'
 alias vi='vim'
-alias ld='ls -lrt ~/Downloads'
+alias l.='ls -d .*'
+alias ld='lrt ~/Downloads'
+alias lrs='ls -lrS'
+alias lrt='ls -lrt'
 
 # alias GNU find (defaults to cwd for path...)
 if hash gfind; then
