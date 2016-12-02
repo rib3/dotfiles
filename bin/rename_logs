@@ -21,19 +21,23 @@ def match_archive(filename):
 def mdatetime(path):
     return datetime.datetime.fromtimestamp(os.path.getmtime(path))
 
-def rename_file(path):
+def target_filename(path):
     match = match_archive(path)
     if match:
         mtime = mdatetime(path)
         date_ext = mtime.strftime('-%Y%m%d') # logrotate default dateext dateformat
         new_parts = [match.group('base'), date_ext, match.group('compress')]
-        new_path = ''.join(filter(None, new_parts))
-        if path != new_path:
-            print('renaming {} -> {}'.format(path, new_path))
-            if os.path.exists(new_path):
-                print('ERROR: {} already exists'.format(new_path))
-            else:
-                os.rename(path, new_path)
+        return ''.join(filter(None, new_parts))
+    return path
+
+def rename_file(path):
+    new_path = target_filename(path)
+    if path != new_path:
+        print('renaming {} -> {}'.format(path, new_path))
+        if os.path.exists(new_path):
+            print('ERROR: {} already exists'.format(new_path))
+        else:
+            os.rename(path, new_path)
 
 def main():
     map(rename_file, get_files())
