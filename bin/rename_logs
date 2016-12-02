@@ -1,0 +1,42 @@
+#!/usr/bin/env python2
+
+from __future__ import print_function
+import datetime
+import os
+import re
+
+def get_files():
+    return filter(os.path.isfile, os.listdir('.'))
+
+archive_re = re.compile(
+        '(?P<base>.*)'
+        '(?P<archive>[.-]\d+)'
+        '(?P<compress>\.gz)?'
+        '$'
+        )
+
+def match_archive(filename):
+    return archive_re.match(filename)
+
+def mdatetime(path):
+    return datetime.datetime.fromtimestamp(os.path.getmtime(path))
+
+def rename_file(path):
+    match = match_archive(path)
+    if match:
+        mtime = mdatetime(path)
+        date_ext = mtime.strftime('-%Y%m%d') # logrotate default dateext dateformat
+        new_parts = [match.group('base'), date_ext, match.group('compress')]
+        new_path = ''.join(filter(None, new_parts))
+        if path != new_path:
+            print('renaming {} -> {}'.format(path, new_path))
+            if os.path.exists(new_path):
+                print('ERROR: {} already exists'.format(new_path))
+            else:
+                os.rename(path, new_path)
+
+def main():
+    map(rename_file, get_files())
+
+if __name__ == '__main__':
+    main()
