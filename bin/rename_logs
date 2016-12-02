@@ -1,9 +1,13 @@
 #!/usr/bin/env python2
 
 from __future__ import print_function
+import argparse
 import datetime
 import os
 import re
+
+parser = argparse.ArgumentParser(description='Rename rotated logfiles')
+parser.add_argument('--dry-run', action='store_true')
 
 def get_files():
     return filter(os.path.isfile, os.listdir('.'))
@@ -30,17 +34,20 @@ def target_filename(path):
         return ''.join(filter(None, new_parts))
     return path
 
-def rename_file(path):
+def update_file(path, args):
     new_path = target_filename(path)
     if path != new_path:
-        print('renaming {} -> {}'.format(path, new_path))
+        print('{} -> {}'.format(path, new_path))
         if os.path.exists(new_path):
             print('ERROR: {} already exists'.format(new_path))
         else:
-            os.rename(path, new_path)
+            if not args.dry_run:
+                os.rename(path, new_path)
 
 def main():
-    map(rename_file, get_files())
+    args = parser.parse_args()
+    for path in get_files():
+        update_file(path, args)
 
 if __name__ == '__main__':
     main()
