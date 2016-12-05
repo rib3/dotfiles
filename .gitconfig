@@ -50,6 +50,7 @@
   r = reset
   rh = reset --hard
   ro = rebase origin
+  rom = !git fetch && git rebase origin/master
   rp = reset --patch
   s = status
   sl = stash list
