@@ -10,6 +10,7 @@
 --ignore-dir=db
 --ignore-dir=app/assets/js/tmpl
 --ignore-dir=release
+--ignore-dir=staticfiles
 --ignore-dir=tmp
 --ignore-dir=.tmp
 --ignore-dir=venv
