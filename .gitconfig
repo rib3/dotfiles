@@ -60,6 +60,7 @@
   ssp = stash show --patch
   sv = stash save
   svp = stash save --patch
+  svu = stash save --included-untracked
 [push]
   default = current
 [color "branch"]
