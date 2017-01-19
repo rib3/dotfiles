@@ -19,4 +19,4 @@ export PROMPT_DIRTRIM="3" # Trim dirs printed by PS1's "\w"
 #export PS1="\h:\W \u\$(__git_ps1)$ "
 export PS1="\w\$(__git_ps1)$ "
 
-if which rbenv 2>&1 > /dev/null; then eval "$(rbenv init -)"; fi
+if hash rbenv 2> /dev/null; then eval "$(rbenv init -)"; fi
