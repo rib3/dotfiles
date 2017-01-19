@@ -43,3 +43,5 @@ fi
 function vg {
   vagrant ssh -c "cd /vagrant; $*"
 }
+
+[[ -s "$HOME/.profile.local" ]] && source "$HOME/.profile.local"
