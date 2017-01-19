@@ -44,4 +44,6 @@ function vg {
   vagrant ssh -c "cd /vagrant; $*"
 }
 
+alias s3-cli='$(which node) --max_old_space_size=4096 $(which s3-cli)'
+
 [[ -s "$HOME/.profile.local" ]] && source "$HOME/.profile.local"
