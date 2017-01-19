@@ -24,7 +24,7 @@ alias lrt='ls -lrt'
 alias vi='vim'
 
 # alias GNU find (defaults to cwd for path...)
-if hash gfind; then
+if hash gfind 2>/dev/null; then
   alias find=gfind
 fi
 
