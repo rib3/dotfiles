@@ -13,6 +13,12 @@ HISTSIZE=100000
 # Yeah...
 export HOMEBREW_NO_EMOJI=1
 
+if [ -z "${SSH_AUTH_SOCK}" ]; then
+  if hash ssh-agent 2>/dev/null; then
+    eval `ssh-agent`
+  fi
+fi
+
 alias g='git'
 alias l.='ls -d .*'
 alias la='ls -a'
