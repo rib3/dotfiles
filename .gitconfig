@@ -23,6 +23,7 @@
   dob = diff-origin-branch
   dom = diff origin/master
   dbm = diff origin/master... # ignores changes to master since branch
+  dni = diff --no-index # compare two paths to each other (not their git state)
   ds = diff --stat
   dt = diff --theirs
   dw = diff --word-diff
