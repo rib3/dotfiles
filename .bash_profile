@@ -1,6 +1,6 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-# just in case git completion isn't loaded (later)
+# fallback in case git completion doesn't get loaded
 __git_ps1 () {
   :
 }
