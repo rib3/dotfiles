@@ -27,7 +27,8 @@ setup_ssh_agent () {
   if hash ssh-agent 2>/dev/null; then
     eval `ssh-agent`
     if [ -d $(dirname "${SHARED_SSH_AUTH_SOCK}") ]; then
-      ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}"
+      ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}" \
+        && export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
     fi
   fi
 }
