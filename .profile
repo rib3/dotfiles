@@ -18,14 +18,14 @@ setup_ssh_agent () {
   if [ -z "${SSH_AUTH_SOCK}" ]; then
     if [ -S "${SHARED_SSH_AUTH_SOCK}" ]; then
       export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
-      if ssh-add -l 2>&1 | grep -v "onnection refused" > /dev/null; then
-        return
-      fi
     fi
-    if hash ssh-agent 2>/dev/null; then
-      eval `ssh-agent`
-      ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}"
-    fi
+  fi
+  if ssh-add -l 2>&1 | grep -v "onnection refused" > /dev/null; then
+    return
+  fi
+  if hash ssh-agent 2>/dev/null; then
+    eval `ssh-agent`
+    ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}"
   fi
 }
 
