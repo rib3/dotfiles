@@ -27,5 +27,8 @@ export PROMPT_DIRTRIM="3" # Trim dirs printed by PS1's "\w"
 
 #export PS1="\h:\W \u\$(__git_ps1)$ "
 export PS1="\w\$(__git_ps1)$ "
+if [ ! -z "${SSH_CLIENT}" ]; then
+  export PS1="\h:${PS1}"
+fi
 
 if hash rbenv 2> /dev/null; then eval "$(rbenv init -)"; fi
