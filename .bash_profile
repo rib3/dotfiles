@@ -5,6 +5,10 @@ __git_ps1 () {
   :
 }
 
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+
 if hash brew 2> /dev/null; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
