@@ -1,5 +1,10 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+# just in case git completion isn't loaded (later)
+__git_ps1 () {
+  :
+}
+
 if hash brew 2> /dev/null; then
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
