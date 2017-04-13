@@ -20,7 +20,8 @@ setup_ssh_agent () {
       export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
     fi
   fi
-  if ssh-add -l 2>&1 | grep -v "onnection refused" > /dev/null; then
+  ssh-add -l > /dev/null 2>&1
+  if [ "${?}" -ne 2 ]; then # unable to contact agent
     return
   fi
   if hash ssh-agent 2>/dev/null; then
