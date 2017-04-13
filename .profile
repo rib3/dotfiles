@@ -13,11 +13,23 @@ HISTSIZE=100000
 # Yeah...
 export HOMEBREW_NO_EMOJI=1
 
-if [ -z "${SSH_AUTH_SOCK}" ]; then
-  if hash ssh-agent 2>/dev/null; then
-    eval `ssh-agent`
+setup_ssh_agent () {
+  local SHARED_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
+  if [ -z "${SSH_AUTH_SOCK}" ]; then
+    if [ -S "${SHARED_SSH_AUTH_SOCK}" ]; then
+      export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
+      if ssh-add -l 2>&1 | grep -v "onnection refused" > /dev/null; then
+        return
+      fi
+    fi
+    if hash ssh-agent 2>/dev/null; then
+      eval `ssh-agent`
+      ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}"
+    fi
   fi
-fi
+}
+
+setup_ssh_agent
 
 alias g='git'
 alias l.='ls -d .*'
