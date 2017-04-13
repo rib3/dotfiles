@@ -21,7 +21,7 @@ setup_ssh_agent () {
     fi
   fi
   ssh-add -l > /dev/null 2>&1
-  if [ "${?}" -ne 2 ]; then # unable to contact agent
+  if [ "${?}" -ne 2 ]; then # 2 means unable to contact agent
     return
   fi
   if hash ssh-agent 2>/dev/null; then
