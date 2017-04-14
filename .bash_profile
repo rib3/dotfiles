@@ -1,5 +1,7 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+shopt -s histappend
+
 # fallback in case git completion doesn't get loaded
 __git_ps1 () {
   :
