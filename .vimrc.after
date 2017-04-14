@@ -1,5 +1,7 @@
 nmap <Leader>N :NERDTreeFind<CR>
 
+set background=dark
+
 " Disable background color on tab bar
 hi TabLineFill term=NONE cterm=NONE gui=NONE
 
