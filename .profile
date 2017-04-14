@@ -7,8 +7,8 @@ MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 # ~/bin first!
 PATH="${HOME}/bin:$PATH"
 
-# Mega command history...
-HISTSIZE=100000
+HISTSIZE=100000 # Mega command history...
+HISTFILESIZE="${HISTSIZE}" # do need to set this?
 
 # Yeah...
 export HOMEBREW_NO_EMOJI=1
