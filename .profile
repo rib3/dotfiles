@@ -10,6 +10,8 @@ PATH="${HOME}/bin:$PATH"
 HISTSIZE=100000 # Mega command history...
 HISTFILESIZE="${HISTSIZE}" # do need to set this?
 
+export EDITOR='vim' # avoids issue with vim's vi mode
+
 # Yeah...
 export HOMEBREW_NO_EMOJI=1
 
