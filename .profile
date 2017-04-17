@@ -16,10 +16,9 @@ export HOMEBREW_NO_EMOJI=1
 
 setup_ssh_agent () {
   local SHARED_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
-  if [ -z "${SSH_AUTH_SOCK}" ]; then
-    if [ -S "${SHARED_SSH_AUTH_SOCK}" ]; then
-      export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
-    fi
+  if [ -z "${SSH_AUTH_SOCK}" \
+    -a -S "${SHARED_SSH_AUTH_SOCK}" ]; then
+    export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
   fi
   ssh-add -l > /dev/null 2>&1
   if [ "${?}" -ne 2 ]; then # 2 means unable to contact agent
