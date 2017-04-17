@@ -9,7 +9,7 @@ PATH="${HOME}/bin:${PATH}"
 HISTSIZE=100000 # Mega command history...
 HISTFILESIZE="${HISTSIZE}" # do need to set this?
 
-export EDITOR='vim' # avoids issue with vim's vi mode
+export EDITOR='vim' # avoid git interaction issue with vim's vi mode
 
 # Yeah...
 export HOMEBREW_NO_EMOJI=1
@@ -22,7 +22,7 @@ setup_ssh_agent () {
   fi
   ssh-add -l > /dev/null 2>&1
   if [ "${?}" -ne 2 ]; then # 2 means unable to contact agent
-    return
+    return # existing agent is working
   fi
   if hash ssh-agent 2>/dev/null; then
     eval `ssh-agent`
