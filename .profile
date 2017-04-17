@@ -1,11 +1,10 @@
 PATH="/usr/local/sbin:${PATH}"
 
 # homebrew installed gnu software
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
 
-# ~/bin first!
-PATH="${HOME}/bin:$PATH"
+PATH="${HOME}/bin:${PATH}"
 
 HISTSIZE=100000 # Mega command history...
 HISTFILESIZE="${HISTSIZE}" # do need to set this?
