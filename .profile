@@ -1,17 +1,12 @@
 PATH="/usr/local/sbin:${PATH}"
-
-# homebrew installed gnu software
-PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
-
-PATH="${HOME}/bin:${PATH}"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"       # brew GNU bin
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}" # "
+PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
 
 HISTSIZE=100000 # Mega command history...
 HISTFILESIZE="${HISTSIZE}" # do need to set this?
 
 export EDITOR='vim' # avoid git interaction issue with vim's vi mode
-
-# Yeah...
 export HOMEBREW_NO_EMOJI=1
 
 setup_ssh_agent () {
