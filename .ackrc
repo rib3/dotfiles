@@ -1,3 +1,4 @@
+--ignore-dir=env # virtualenv
 --ignore-file=is:newrelic_agent.log
 --ignore-dir=public
 --noignore-dir=javascripts # rails...
