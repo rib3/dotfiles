@@ -20,12 +20,12 @@
   dc = diff --cached
   dd = diff --word-diff-regex .
   do = diff --ours
-  dob = diff-origin-branch
   dom = diff origin/master
   dbm = diff origin/master... # ignores changes to master since branch
   dni = diff --no-index # compare two paths to each other (not their git state)
   ds = diff --stat
   dt = diff --theirs
+  du = diff @{upstream}
   dw = diff --word-diff
   f = fetch
   fco = !git fetch && git co

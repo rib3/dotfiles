@@ -1,5 +1,0 @@
-#!/bin/sh -e
-
-BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-
-git diff "origin/${BRANCH_NAME}"
