@@ -45,17 +45,17 @@ if hash gfind 2>/dev/null; then
   alias find=gfind
 fi
 
-# colors for (gnu) ls, dir, and *grep
 if hash gdircolors 2>/dev/null; then
   test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
   alias ls='gls -F --color=auto'
   alias dir='gdir --color=auto'
   alias vdir='gvdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
 fi
+
+# GNU and macOS (BSD) *grep both support color
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 function vg {
   vagrant ssh -c "cd /vagrant; $*"
