@@ -1,3 +1,4 @@
+PATH="${HOME}/.npm-user/bin:${PATH}" # .npmrc: prefix
 PATH="/usr/local/sbin:${PATH}"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"       # brew coreutils "prefixless"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}" # "
