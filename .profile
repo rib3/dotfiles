@@ -45,11 +45,11 @@ if hash gfind 2>/dev/null; then
   alias find=gfind
 fi
 
-if hash gdircolors 2>/dev/null; then
-  test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-  alias ls='gls -F --color=auto'
-  alias dir='gdir --color=auto'
-  alias vdir='gvdir --color=auto'
+if hash dircolors 2>/dev/null; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls -F --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
 fi
 
 # GNU and macOS (BSD) *grep both support color
