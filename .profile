@@ -1,5 +1,5 @@
 PATH="/usr/local/sbin:${PATH}"
-PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"       # brew GNU bin
+PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"       # brew coreutils "prefixless"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}" # "
 PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
 
@@ -15,7 +15,7 @@ setup_ssh_agent () {
     -a -S "${SHARED_SSH_AUTH_SOCK}" ]; then
     export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
   fi
-  ssh-add -l > /dev/null 2>&1
+  ssh-add -l > /dev/null 2>&1 # test agent functionality
   if [ "${?}" -ne 2 ]; then # 2 means unable to contact agent
     return # existing agent is working
   fi
