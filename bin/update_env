@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# create and/or update a python virtualenv
+
+ENV_DIR='venv'
+PY_VERSION='python3.5'
+REQUIREMENTS='requirements.txt'
+
+test -e "${REQUIREMENTS}" || exit
+
+test -d "${ENV_DIR}" || virtualenv "${ENV_DIR}" -p "${PY_VERSION}" --no-site-packages || exit
+
+"${ENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
