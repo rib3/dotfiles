@@ -5,9 +5,20 @@ set -e
 
 VENV_DIR='venv'
 PY_VERSION='python3.5'
-REQUIREMENTS='requirements.txt'
+REQUIREMENTS_BASE='requirements-base.txt'
+REQUIREMENTS_FREEZE='requirements.txt'
 
-test -e "${REQUIREMENTS}" || exit
+if [ "$1" == "base" ]; then
+  echo "using base requirements"
+  REQUIREMENTS="${REQUIREMENTS_BASE}"
+else
+  REQUIREMENTS="${REQUIREMENTS_FREEZE}"
+fi
+
+if [ ! -f "${REQUIREMENTS}" ]; then
+  (>&2 echo "missing requirements file: ${REQUIREMENTS}")
+  exit 1
+fi
 
 test -d "${VENV_DIR}" || virtualenv "${VENV_DIR}" -p "${PY_VERSION}" --no-site-packages
 
