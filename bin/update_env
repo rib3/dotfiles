@@ -21,7 +21,7 @@ if [ ! -f "${REQUIREMENTS}" ]; then
   exit 1
 fi
 
-echo "checking virtualenv: ${VENV_DIR}"
+echo "creating/updating virtualenv: ${VENV_DIR}"
 test -d "${VENV_DIR}" || virtualenv "${VENV_DIR}" -p "${PY_VERSION}" --no-site-packages
 
 echo "requirements file: ${REQUIREMENTS}"
