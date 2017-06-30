@@ -3,12 +3,12 @@ set -e
 
 # create and/or update a python virtualenv
 
-ENV_DIR='venv'
+VENV_DIR='venv'
 PY_VERSION='python3.5'
 REQUIREMENTS='requirements.txt'
 
 test -e "${REQUIREMENTS}" || exit
 
-test -d "${ENV_DIR}" || virtualenv "${ENV_DIR}" -p "${PY_VERSION}" --no-site-packages
+test -d "${VENV_DIR}" || virtualenv "${VENV_DIR}" -p "${PY_VERSION}" --no-site-packages
 
-"${ENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
+"${VENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
