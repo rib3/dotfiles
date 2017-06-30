@@ -25,3 +25,6 @@ test -d "${VENV_DIR}" || virtualenv "${VENV_DIR}" -p "${PY_VERSION}" --no-site-p
 
 echo "requirements file: ${REQUIREMENTS}"
 "${VENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
+
+echo "freezing to: ${REQUIREMENTS}"
+"${VENV_DIR}/bin/pip" freeze > "${REQUIREMENTS_FREEZE}"
