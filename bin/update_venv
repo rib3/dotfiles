@@ -27,6 +27,8 @@ test -d "${VENV_DIR}" || virtualenv "${VENV_DIR}" -p "${PY_VERSION}" --no-site-p
 echo "requirements file: ${REQUIREMENTS}"
 "${VENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
 
-# pkg-resources exclusion for ubuntu: https://stackoverflow.com/a/40167445
-echo "freezing to: ${REQUIREMENTS}"
-"${VENV_DIR}/bin/pip" freeze | grep -v "^pkg-resources" > "${REQUIREMENTS_FREEZE}"
+if [ "$1" == "base" ]; then
+  # pkg-resources exclusion for ubuntu: https://stackoverflow.com/a/40167445
+  echo "freezing to: ${REQUIREMENTS}"
+  "${VENV_DIR}/bin/pip" freeze | grep -v "^pkg-resources" > "${REQUIREMENTS_FREEZE}"
+fi
