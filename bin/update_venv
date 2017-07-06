@@ -28,7 +28,7 @@ echo "requirements file: ${REQUIREMENTS}"
 "${VENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
 
 if [ "$1" == "base" ]; then
-  echo "freezing to: ${REQUIREMENTS}"
+  echo "freezing to: ${REQUIREMENTS_FREEZE}"
   # pkg-resources exclusion for ubuntu: https://stackoverflow.com/a/40167445
   "${VENV_DIR}/bin/pip" freeze | grep -v "^pkg-resources" > "${REQUIREMENTS_FREEZE}"
 fi
