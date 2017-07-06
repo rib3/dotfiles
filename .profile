@@ -12,6 +12,7 @@ HISTSIZE=100000 # Mega command history...
 HISTFILESIZE="${HISTSIZE}" # do need to set this?
 
 export EDITOR='vim' # avoid git interaction issue with vim's vi mode
+export PIP_REQUIRE_VIRTUALENV="true"
 export HOMEBREW_NO_EMOJI=1
 
 setup_ssh_agent () {
