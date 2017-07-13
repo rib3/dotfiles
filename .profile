@@ -45,6 +45,8 @@ alias ll='ls -lA'
 alias lrs='ls -lrS'
 alias lrt='ls -lrt'
 alias vi='vim'
+alias vea='source venv/bin/activate'
+alias ved='deactivate'
 
 # alias GNU find (defaults to cwd for path...)
 if hash gfind 2>/dev/null; then
