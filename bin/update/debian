@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# -s and -i don't seem to like escaped pass through
+sudo /bin/sh -c "apt-get update && apt-get -dy dist-upgrade && apt-get dist-upgrade && apt-get clean && apt-get autoremove"
