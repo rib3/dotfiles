@@ -4,6 +4,7 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"       # brew coreutils "p
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}" # "
 export GOPATH="${HOME}/.gopath"
 PATH="${GOPATH}/bin:${PATH}"
+PATH="${HOME}/.cargo/bin:${PATH}" # rust
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh" # This loads nvm
 PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
