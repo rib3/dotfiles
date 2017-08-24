@@ -8,7 +8,7 @@ PY_VERSION='python3.5'
 REQUIREMENTS_BASE='requirements-base.txt'
 REQUIREMENTS_FREEZE='requirements.txt'
 
-REQUIREMENTS_SELECT=${1:-}
+REQUIREMENTS_SELECT="${1:-}"
 DO_FREEZE="" # empty for false
 
 if [ "${REQUIREMENTS_SELECT}" == "base" ]; then
