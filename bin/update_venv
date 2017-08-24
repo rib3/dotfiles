@@ -8,10 +8,14 @@ PY_VERSION='python3.5'
 REQUIREMENTS_BASE='requirements-base.txt'
 REQUIREMENTS_FREEZE='requirements.txt'
 
-if [ "${1:-}" == "base" ]; then
+REQUIREMENTS_SELECT=${1:-}
+DO_FREEZE=0
+
+if [ "${REQUIREMENTS_SELECT}" == "base" ]; then
   echo "resetting venv and installing base requirements"
   REQUIREMENTS="${REQUIREMENTS_BASE}"
   rm -rf "${VENV_DIR}"
+  DO_FREEZE=1
 else
   REQUIREMENTS="${REQUIREMENTS_FREEZE}"
 fi
@@ -27,7 +31,7 @@ test -d "${VENV_DIR}" || virtualenv "${VENV_DIR}" -p "${PY_VERSION}" --no-site-p
 echo "requirements file: ${REQUIREMENTS}"
 "${VENV_DIR}/bin/pip" install -r "${REQUIREMENTS}"
 
-if [ "${1:-}" == "base" ]; then
+if [ ! -z "${DO_FREEZE}" ]; then
   echo "freezing to: ${REQUIREMENTS_FREEZE}"
   # pkg-resources exclusion for ubuntu: https://stackoverflow.com/a/40167445
   "${VENV_DIR}/bin/pip" freeze | grep -v "^pkg-resources" > "${REQUIREMENTS_FREEZE}"
