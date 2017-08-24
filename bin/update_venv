@@ -9,13 +9,13 @@ REQUIREMENTS_BASE='requirements-base.txt'
 REQUIREMENTS_FREEZE='requirements.txt'
 
 REQUIREMENTS_SELECT=${1:-}
-DO_FREEZE=""
+DO_FREEZE="" # empty for false
 
 if [ "${REQUIREMENTS_SELECT}" == "base" ]; then
   echo "resetting venv and installing base requirements"
   REQUIREMENTS="${REQUIREMENTS_BASE}"
   rm -rf "${VENV_DIR}"
-  DO_FREEZE="yes"
+  DO_FREEZE="yes" # non-empty for true
 else
   REQUIREMENTS="${REQUIREMENTS_FREEZE}"
 fi
