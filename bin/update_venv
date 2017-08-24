@@ -17,7 +17,7 @@ else
 fi
 
 if [ ! -f "${REQUIREMENTS}" ]; then
-  (>&2 echo "missing requirements file: ${REQUIREMENTS}")
+  >&2 echo "missing requirements file: ${REQUIREMENTS}"
   exit 1
 fi
 
