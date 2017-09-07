@@ -6,7 +6,11 @@
 # * dropped -n1 arg from xargs (not needed), keep xargs to combine lines
 # http://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged
 
-git branch --merged master | grep -v "\bmaster\b\|\*" | xargs git branch -d
+# gnu xargs has `-r, --no-run-if-empty` (BSD does not...)
+MERGED=$(git branch --merged master | grep -v "\bmaster\b\|\*")
+if [ -n "${MERGED}" ]; then
+  echo "${MERGED}" | xargs git branch -d
+fi
 
 set -f # Disable glob expansion (I WANT brace expansion)
 git branch --list {deployable,staging}.* | grep -v "\*" | xargs git branch -D
