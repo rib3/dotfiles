@@ -11,6 +11,3 @@ MERGED=$(git branch --merged master | grep -v "\bmaster\b\|\*")
 if [ -n "${MERGED}" ]; then
   echo "${MERGED}" | xargs git branch -d
 fi
-
-set -f # Disable glob expansion (I WANT brace expansion)
-git branch --list {deployable,staging}.* | grep -v "\*" | xargs git branch -D
