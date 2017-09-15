@@ -8,3 +8,7 @@ hi TabLineFill term=NONE cterm=NONE gui=NONE
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v/(v?env*|node_modules|public|staticfiles)',
   \}
+
+if exists(":FZF")
+  map <C-P> :FZF<CR>
+endif
