@@ -16,6 +16,16 @@ export EDITOR='vim' # avoid git interaction issue with vim's vi mode
 export PIP_REQUIRE_VIRTUALENV="true"
 export HOMEBREW_NO_EMOJI=1
 
+if hash ag 2>/dev/null; then
+  # ag uses .gitignore
+  export FZF_DEFAULT_COMMAND='ag -g ""'
+fi
+
+if hash rg 2>/dev/null; then
+  # rg better at using .gitignore
+  export FZF_DEFAULT_COMMAND='rg --color never --files -g ""'
+fi
+
 setup_ssh_agent () {
   local SHARED_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
   if [ -z "${SSH_AUTH_SOCK}" \
