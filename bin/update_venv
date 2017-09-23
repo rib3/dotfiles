@@ -4,7 +4,7 @@ set -euo pipefail
 # create and/or update a python virtualenv
 
 VENV_DIR='venv'
-PY_VERSION='python3.5'
+PY_VERSION="python$(cat .python-version)"
 REQUIREMENTS_BASE='requirements-base.txt'
 REQUIREMENTS_FREEZE='requirements.txt'
 
