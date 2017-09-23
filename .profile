@@ -23,7 +23,7 @@ fi
 
 if hash rg 2>/dev/null; then
   # rg better at using .gitignore
-  export FZF_DEFAULT_COMMAND='rg --color never --files -g ""'
+  export FZF_DEFAULT_COMMAND='rg --color never --files'
 fi
 
 setup_ssh_agent () {
