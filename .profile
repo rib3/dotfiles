@@ -7,6 +7,7 @@ PATH="${GOPATH}/bin:${PATH}"
 PATH="${HOME}/.cargo/bin:${PATH}" # rust
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh" # This loads nvm
+PATH="${HOME}/.local/bin:${PATH}" # pip --user
 PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
 
 HISTSIZE=100000 # Mega command history...
