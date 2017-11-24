@@ -83,4 +83,13 @@ function vg {
 
 alias s3-cli='$(which node) --max_old_space_size=4096 $(which s3-cli)'
 
+function tp {
+  WRAPPER_BIN="${HOME}/.tmuxp/${1}"
+  if [ -x "${WRAPPER_BIN}" ]; then
+    "${WRAPPER_BIN}" "${@:2}"
+  else
+    tmuxp load "${@}"
+  fi
+}
+
 [[ -s "$HOME/.profile.local" ]] && source "$HOME/.profile.local"
