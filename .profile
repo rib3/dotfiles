@@ -92,4 +92,11 @@ function tp {
   fi
 }
 
+function ws {
+  tp "${@}" || {
+    echo "activating tmux manually"
+    cd "${HOME}/workspace/${1}" && tmux new-session -As "${1}"
+  }
+}
+
 [[ -s "$HOME/.profile.local" ]] && source "$HOME/.profile.local"
