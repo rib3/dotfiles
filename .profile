@@ -95,7 +95,8 @@ function tp {
 function ws {
   tp "${@}" || {
     echo "activating tmux manually"
-    cd "${HOME}/workspace/${1}" && tmux new-session -As "${1}"
+    # subshell to retain working directory
+    (cd "${HOME}/workspace/${1}" && exec tmux new-session -As "${1}")
   }
 }
 
