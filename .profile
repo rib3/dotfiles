@@ -100,4 +100,12 @@ function ws {
   }
 }
 
+function mkdcd {
+  DIR=`date -I`
+  if [ -n "${1}" ]; then
+    DIR="${DIR}.${1// /_}"
+  fi
+  mkdir "${DIR}" && cd "${DIR}" && pwd
+}
+
 [[ -s "$HOME/.profile.local" ]] && source "$HOME/.profile.local"
