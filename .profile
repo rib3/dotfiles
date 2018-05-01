@@ -15,6 +15,7 @@ HISTFILESIZE="${HISTSIZE}" # do need to set this?
 
 export EDITOR='vim' # avoid git interaction issue with vim's vi mode
 export PIP_REQUIRE_VIRTUALENV="true"
+export PYTHONDONTWRITEBYTECODE=1
 export HOMEBREW_NO_EMOJI=1
 
 if hash ag 2>/dev/null; then
