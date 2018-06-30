@@ -96,8 +96,12 @@ function tp {
 function ws {
   tp "${@}" || {
     echo "activating tmux manually"
+    WS_DIR="${1}"
+    if [ ! -d "${WS_DIR}" ]; then
+        WS_DIR="${HOME}/workspace/${WS_DIR}"
+    fi
     # subshell to retain working directory
-    (cd "${HOME}/workspace/${1}" && exec tmux new-session -As "${1}")
+    (cd "${WS_DIR}" && exec tmux new-session -As "${1}")
   }
 }
 
