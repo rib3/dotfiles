@@ -59,6 +59,8 @@
   ro = rebase origin
   rom = !git fetch && git rebase origin/master
   rp = reset --patch
+  ru = !git fetch && git rebase "@{upstream}"
+  rui = !git fetch && git rebase -i "@{upstream}"
   s = status
   sl = stash list
   sp = stash pop
