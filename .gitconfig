@@ -53,7 +53,7 @@
   pf = pull --ff-only
   pl = pull
   pu = push
-  puo = push -u origin
+  puo = push -u origin HEAD ; `HEAD` pushes to branch of same name
   r = reset
   rh = reset --hard
   ro = rebase origin
@@ -70,7 +70,7 @@
   svp = stash save --patch
   svu = stash save --include-untracked
 [push]
-  default = current
+  default = simple ; default >= 2.2.2; `puo` alias used for initial push
 [color "branch"]
   upstream = bold blue
 [hub]
