@@ -56,6 +56,7 @@
   puo = push -u origin HEAD # `HEAD` pushes to branch of same name
   r = reset
   rh = reset --hard
+  rhu = reset --hard "@{upstream}"
   ro = rebase origin
   rom = !git fetch && git rebase origin/master
   rp = reset --patch
