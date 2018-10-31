@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 function start-vm {
@@ -10,16 +9,5 @@ function start-vm {
   fi
 }
 
-function wait-for-ssh {
-  echo -n "waiting for ssh"
-  while ! ssh -o BatchMode=yes -o ConnectTimeout=5 "${1}" echo &> /dev/null;
-  do
-    echo -n "."
-    sleep 1 # avoid aggressive retry on "fast" failures
-  done
-  echo " UP"
-}
-
 start-vm "${1}"
-wait-for-ssh "${1}"
-exec ssh "${1}"
+exec wssh "${1}"

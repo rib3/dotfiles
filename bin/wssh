@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+function wait-for-ssh {
+  echo -n "waiting for ssh"
+  while ! ssh -o BatchMode=yes -o ConnectTimeout=5 "${1}" echo &> /dev/null;
+  do
+    echo -n "."
+    sleep 1 # avoid aggressive retry on "fast" failures
+  done
+  echo " UP"
+}
+
+wait-for-ssh "${1}"
+exec ssh "${1}"
