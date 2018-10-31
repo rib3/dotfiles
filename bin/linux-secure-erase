@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+PASSWORD=$(pwgen 16)"
+
+echo "setting security password to: '${PASSWORD}'"
+echo "script DISABLED"
+exit
+
+hdparm --user-master u --security-set-pass "${PASSWORD}" "${1}"
+
+SECURITY=$(hdparm -I "${1}" | grep -A5 "^Security:")
+if echo "${SECURITY}" | grep -i "not.*enabled" > /dev/null 2>&1; then
+  echo "secure erase does not appear to be enabled"
+  echo "${SECURITY}"
+  exit 1
+fi
+
+echo "initializing secure erase"
+exec time hdparm --user-master u --security-erase-enhanced "${PASSWORD}" "${1}"
