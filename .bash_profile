@@ -2,6 +2,12 @@
 
 shopt -s histappend
 
+__reboot_required_ps1 () {
+  [[ -e /var/run/reboot-required ]] && {
+    echo "REBOOT:"
+  }
+}
+
 # fallback in case git completion doesn't get loaded
 __git_ps1 () {
   :
@@ -28,7 +34,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 export PROMPT_DIRTRIM="3" # Trim dirs printed by PS1's "\w"
 
 #export PS1="\h:\W \u\$(__git_ps1)$ "
-export PS1="\w\$(__git_ps1)$ "
+export PS1="\$(__reboot_required_ps1)\w\$(__git_ps1)$ "
 if [ ! -z "${SSH_CLIENT}" ]; then
   export PS1="\h:${PS1}"
 fi
