@@ -1,9 +1,11 @@
 #!/bin/bash -ex
 
 brew update
-
 # Use `brew pin` to prevent formulae from upgrading
 # `brew list --pinned`
 brew upgrade
+brew cask upgrade
+
+brew doctor # check for deprecated taps, etc
 
 exit 0
