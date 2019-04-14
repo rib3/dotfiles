@@ -23,6 +23,8 @@
   do = diff --ours
   dom = diff origin/master
   dbm = diff origin/master... # ignores changes to master since branch
+  dod = diff origin/develop
+  dbd = diff origin/develop... # ignores changes to develop since branch
   dbu = diff @{upstream}...
   dni = diff --no-index # compare two paths to each other (not their git state)
   ds = diff --stat
