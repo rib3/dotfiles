@@ -1,14 +1,15 @@
-#!/bin/sh
+#!/bin/bash
+set -e
 
-# Ideas taken from SO answer:
-# * better grep for 'master'
-# * never try to delete the active branch (was part of the master check)
-# * dropped -n1 arg from xargs (not needed), keep xargs to combine lines
-# http://stackoverflow.com/questions/6127328/how-can-i-delete-all-git-branches-which-have-been-merged
+merged_target="${1-origin/master}"
 
 git fetch
-MERGED=$(git branch --merged origin/master | grep -v "\bmaster\b\|\*")
-if [ -n "${MERGED}" ]; then
-  # gnu xargs has `-r, --no-run-if-empty` (BSD does not...)
-  echo "${MERGED}" | xargs git branch -d
-fi
+
+branches=$(git branch --merged "${merged_target}" | grep -v "^\*")
+echo "${branches}" | while read branch; do
+    branch_full_name=$(git rev-parse --symbolic-full-name "${branch}")
+    branch_upstream=$(git for-each-ref --format='%(upstream:short)' "${branch_full_name}")
+    if [ "${branch_upstream}" != "${merged_target}" ]; then
+        git branch -d "${branch}"
+    fi
+done
