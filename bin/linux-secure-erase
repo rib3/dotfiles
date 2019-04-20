@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PASSWORD=$(pwgen 16)"
+PASSWORD="$(pwgen 16)"
 
 echo "setting security password to: '${PASSWORD}'"
 echo "script DISABLED"
@@ -17,4 +17,5 @@ if echo "${SECURITY}" | grep -i "not.*enabled" > /dev/null 2>&1; then
 fi
 
 echo "initializing secure erase"
-exec time hdparm --user-master u --security-erase-enhanced "${PASSWORD}" "${1}"
+# try --security-erase-enhanced on other devices
+exec time hdparm --user-master u --security-erase "${PASSWORD}" "${1}"
