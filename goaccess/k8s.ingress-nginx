@@ -1,0 +1,10 @@
+# goaccess settings for k8s ingress-nginx
+
+date-format %d/%b/%Y
+
+# https://github.com/joaquindlz/goaccess/blob/9bf7e6bd3a3b140010bdd439dd07864f2214af12/config/goaccess.conf#L97 
+# log-format %^ %^ [%h] %^ %^ [%d:%t %^] "%r" %s %b "%R" "%u" %^ %^ [%v] %^:%^ %^ %T %^ %^
+
+# tweaked to include time zone in time-format
+time-format %H:%M:%S %z
+log-format %^ %^ [%h] %^ %^ [%d:%t] "%r" %s %b "%R" "%u" %^ %^ [%v] %^:%^ %^ %T %^ %^
