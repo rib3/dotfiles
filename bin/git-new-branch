@@ -9,8 +9,11 @@ if [ -z "$1" ]; then
   die "missing branch name"
 fi
 
-BASE="${2:-origin/master}"
-
 git fetch || die
+
+# how to refresh HEAD if it changes upstream
+# git remote set-head origin -a
+HEAD=$(git symbolic-ref --short refs/remotes/origin/HEAD)
+BASE="${2:-${HEAD}}"
 
 git checkout --no-track -b "${1}" "${BASE}"
