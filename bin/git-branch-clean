@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 
-merged_target="${1-origin/master}"
+# how to refresh HEAD if it changes upstream
+# git remote set-head origin -a
+HEAD=$(git symbolic-ref --short refs/remotes/origin/HEAD)
+merged_target="${1:-${HEAD}}"
 
 git fetch
 
