@@ -20,6 +20,7 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
+    enable_vimfiler_welcome = false
     bootstrap_after = "myspacevim#after"
 
 [[layers]]
