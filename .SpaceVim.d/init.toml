@@ -37,7 +37,11 @@ default_position = 'top'
 default_height = 30
 
 [[layers]]
-name = "denite"
+# disable until SpaceVim is updated for Denite 3.0
+# https://github.com/SpaceVim/SpaceVim/issues/2863
+# https://github.com/SpaceVim/SpaceVim/pull/2826
+# name = "denite"
+name = "unite"
 
 [[layers]]
 name = "lang#python"
