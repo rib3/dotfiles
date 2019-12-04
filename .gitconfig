@@ -9,7 +9,7 @@
   ai = add -i
   ap = add --patch
   b = branch
-  blv = branch -lvv
+  blv = branch -lvv --sort=-committerdate
   ca = commit -v --amend
   ci = commit
   cli = clean -di
