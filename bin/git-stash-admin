@@ -13,7 +13,7 @@ while [ true ]; do
   STASH="stash@{${I}}"
   git stash show "${STASH}"
   git stash list -n $((${I} + 1 )) | tail -n 1
-  echo -n "action [A,D,P,p,q,d,n,?]? "
+  echo -n "action [A,D,P,d,n,p,q,?]? "
   read INPUT
   case "${INPUT}" in
     A)
@@ -29,8 +29,8 @@ while [ true ]; do
     d)
       git stash show --patch "${STASH}"
       ;;
-    q)
-      exit 0
+    n)
+      I=$((${I} + 1))
       ;;
     p)
       if [ "${I}" -eq 0 ]; then
@@ -39,18 +39,18 @@ while [ true ]; do
         I=$((${I} - 1))
       fi
       ;;
-    n)
-      I=$((${I} + 1))
+    q)
+      exit 0
       ;;
     ?)
       cat << EOF
 A - apply this stash (apply changes, keep stash)
-P - pop this stash
 D - drop (delete) this stash
+P - pop this stash
 d - diff this stash
-q - quit
-p - previous stash
 n - next stash
+p - previous stash
+q - quit
 EOF
       ;;
   esac
