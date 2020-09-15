@@ -7,6 +7,8 @@ PATH="${GOPATH}/bin:${PATH}"
 PATH="${HOME}/.cargo/bin:${PATH}" # rust
 export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh" # This loads nvm
+export PYENV_ROOT="${HOME}/.pyenv"
+PATH="${PYENV_ROOT}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}" # pip --user
 PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
 
