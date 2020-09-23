@@ -14,7 +14,7 @@ while [ true ]; do
   git stash show "${STASH}"
   git stash list -n $((${I} + 1 )) | tail -n 1
   git show "${STASH}^3" --stat 2> /dev/null
-  echo -n "action [A,D,P,d,n,p,q,?]? "
+  echo -n "action [A,D,P,d,j,n,p,q,?]? "
   read INPUT
   case "${INPUT}" in
     A)
@@ -23,6 +23,10 @@ while [ true ]; do
       ;;
     D)
       git stash drop "${STASH}"
+      ;;
+    j)
+      echo -n "Jump to:"
+      read I
       ;;
     P)
       git stash pop "${STASH}"
