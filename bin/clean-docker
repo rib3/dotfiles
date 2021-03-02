@@ -1,0 +1,6 @@
+#!/bin/bash
+set -ueo pipefail
+
+docker container prune
+docker image prune --all
+docker volume prune
