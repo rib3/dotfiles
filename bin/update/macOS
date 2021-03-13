@@ -4,7 +4,7 @@ brew update
 # Use `brew pin` to prevent formulae from upgrading
 # `brew list --pinned`
 brew upgrade
-brew cask upgrade
+brew upgrade --cask
 
 brew doctor # check for deprecated taps, etc
 
