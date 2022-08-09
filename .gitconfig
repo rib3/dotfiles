@@ -9,6 +9,8 @@
 [delta]
   syntax-theme = Dracula
   line-numbers = true
+[diff]
+  ; colorMoved = default
 [alias]
   ai = add -i
   ap = add --patch
