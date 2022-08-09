@@ -3,8 +3,12 @@
   email = git@riblack.com
 [core]
   safecrlf = false
+  ; pager = delta --diff-so-fancy
 [color]
   ui = true
+[delta]
+  syntax-theme = Dracula
+  line-numbers = true
 [alias]
   ai = add -i
   ap = add --patch
