@@ -21,7 +21,9 @@
   dc = diff --cached
   dd = diff --word-diff-regex .
   do = diff --ours
+  doh = diff origin/HEAD
   dom = diff origin/master
+  dbh = diff origin/HEAD... # ignores changes to master since branch
   dbm = diff origin/master... # ignores changes to master since branch
   dod = diff origin/develop
   dbd = diff origin/develop... # ignores changes to develop since branch
@@ -39,9 +41,11 @@
   flsm = !git fetch && git lsm
   ft = fetch --tags # when a tag is updated
   lo = log --oneline
+  loh = !git lo origin/HEAD...
   lom = !git lo origin/master...
   lou = !git lo @{upstream}...
   lp = log --patch
+  lph = !git lp origin/HEAD...
   lpm = !git lp origin/master...
   lpu = !git lp @{upstream}...
   ls = log --stat
