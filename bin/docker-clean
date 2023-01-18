@@ -1,6 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -ueo pipefail
 
 docker container prune
 docker image prune --all
+docker builder prune --all
 docker volume prune
+
+# how many of the above does this do/cover?
+docker system prune --all
