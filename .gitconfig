@@ -22,6 +22,7 @@
   co = checkout
   cop = checkout --patch
   conb = checkout --no-track -b
+  cou = git checkout @{upstream}
   cv = commit -v
   d = diff
   dbd = diff origin/develop... # ignores changes since branching
