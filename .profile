@@ -80,10 +80,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-function vg {
-  vagrant ssh -c "cd /vagrant; $*"
-}
-
 alias s3-cli='$(which node) --max_old_space_size=4096 $(which s3-cli)'
 
 function tp {
