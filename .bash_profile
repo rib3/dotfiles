@@ -13,6 +13,9 @@ __git_ps1 () {
   :
 }
 
+# avoid command not found package suggestions
+unset command_not_found_handle
+
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
