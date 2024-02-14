@@ -41,5 +41,3 @@ export PS1="\$(__reboot_required_ps1)\w\$(__git_ps1)$ "
 if [ ! -z "${SSH_CLIENT}" ]; then
   export PS1="\h:${PS1}"
 fi
-
-if hash rbenv 2> /dev/null; then eval "$(rbenv init -)"; fi
