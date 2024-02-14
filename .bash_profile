@@ -1,5 +1,7 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+HISTSIZE=100000 # Mega command history...
+HISTFILESIZE="${HISTSIZE}" # do need to set this?
 shopt -s histappend
 
 __reboot_required_ps1 () {
