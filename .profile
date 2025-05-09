@@ -12,6 +12,10 @@ PATH="${PYENV_ROOT}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}" # pip --user
 PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
 
+if hash mise 2> /dev/null; then
+  eval "$(mise activate)"
+fi
+
 export EDITOR='vim' # avoid git interaction issue with vim's vi mode
 export PIP_REQUIRE_VIRTUALENV="true"
 export PYTHONDONTWRITEBYTECODE=1
