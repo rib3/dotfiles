@@ -10,9 +10,9 @@ export NVM_DIR="${HOME}/.nvm"
 export PYENV_ROOT="${HOME}/.pyenv"
 PATH="${PYENV_ROOT}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}" # pip --user
-PATH="${HOME}/bin:${PATH}" # keep as last PATH tweak
+PATH="${HOME}/bin:${PATH}"        # keep as last PATH tweak
 
-if hash mise 2> /dev/null; then
+if hash mise 2>/dev/null; then
   eval "$(mise activate)"
 fi
 
@@ -31,21 +31,21 @@ if hash rg 2>/dev/null; then
   export FZF_DEFAULT_COMMAND='rg --color never --files'
 fi
 
-setup_ssh_agent () {
+setup_ssh_agent() {
   local SHARED_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
   if [ -z "${SSH_AUTH_SOCK}" \
     -a -S "${SHARED_SSH_AUTH_SOCK}" ]; then
     export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
   fi
-  ssh-add -l > /dev/null 2>&1 # test agent functionality
-  if [ "${?}" -ne 2 ]; then # 2 means unable to contact agent
-    return # existing agent is working
+  ssh-add -l >/dev/null 2>&1 # test agent functionality
+  if [ "${?}" -ne 2 ]; then  # 2 means unable to contact agent
+    return                   # existing agent is working
   fi
   if hash ssh-agent 2>/dev/null; then
-    eval `ssh-agent`
+    eval $(ssh-agent)
     if [ -d $(dirname "${SHARED_SSH_AUTH_SOCK}") ]; then
-      ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}" \
-        && export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
+      ln -sf "${SSH_AUTH_SOCK}" "${SHARED_SSH_AUTH_SOCK}" &&
+        export SSH_AUTH_SOCK="${SHARED_SSH_AUTH_SOCK}"
     fi
   fi
 }
@@ -101,7 +101,7 @@ function ws {
     echo "activating tmux manually"
     WS_DIR="${1}"
     if [ ! -d "${WS_DIR}" ]; then
-        WS_DIR="${HOME}/workspace/${WS_DIR}"
+      WS_DIR="${HOME}/workspace/${WS_DIR}"
     fi
     # subshell to retain working directory
     (cd "${WS_DIR}" && exec tmux new-session -As "${1}")
@@ -109,7 +109,7 @@ function ws {
 }
 
 function mkdcd {
-  DIR=`date -I`
+  DIR=$(date -I)
   if [ -n "${1}" ]; then
     DIR="${DIR}.${1// /_}"
   fi
