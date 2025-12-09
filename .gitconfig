@@ -88,3 +88,5 @@
   upstream = bold blue
 [hub]
   protocol = ssh
+[rebase]
+  autoSquash = true
