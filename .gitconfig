@@ -88,5 +88,7 @@
   upstream = bold blue
 [hub]
   protocol = ssh
+[init]
+  defaultBranch = main # git 3.0 default
 [rebase]
   autoSquash = true
