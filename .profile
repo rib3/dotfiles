@@ -21,6 +21,10 @@ export PIP_REQUIRE_VIRTUALENV="true"
 export PYTHONDONTWRITEBYTECODE=1
 export HOMEBREW_NO_EMOJI=1
 
+if hash delta 2>/dev/null; then
+  export GIT_PAGER="delta --diff-so-fancy"
+fi
+
 if hash ag 2>/dev/null; then
   # ag uses .gitignore
   export FZF_DEFAULT_COMMAND='ag -g ""'

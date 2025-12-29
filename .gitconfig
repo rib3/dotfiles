@@ -3,7 +3,7 @@
   email = git@riblack.com
 [core]
   safecrlf = false
-  ; pager = delta --diff-so-fancy
+  ; pager ; see .profile GIT_PAGER
 [color]
   ui = true
 [delta]
