@@ -70,6 +70,7 @@ alias ved='deactivate'
 alias vi='vim'
 if hash nvim 2>/dev/null; then
   alias vim='nvim'
+  export EDITOR='nvim'
 fi
 
 # alias GNU find (defaults to cwd for path...)
