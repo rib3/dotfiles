@@ -64,7 +64,7 @@ alias lf='ls -FA'
 alias ll='ls -lA'
 alias lrs='ls -lrS'
 alias lrt='ls -lrt'
-alias vea='source venv/bin/activate'
+alias vea='source .venv/bin/activate'
 alias ved='deactivate'
 
 alias vi='vim'
