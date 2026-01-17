@@ -22,7 +22,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export HOMEBREW_NO_EMOJI=1
 
 if hash delta 2>/dev/null; then
-  export GIT_PAGER="delta --diff-so-fancy"
+  export GIT_PAGER="delta"
 fi
 
 if hash ag 2>/dev/null; then

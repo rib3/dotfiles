@@ -7,6 +7,7 @@
 [color]
   ui = true
 [delta]
+  diff-so-fancy = true
   syntax-theme = Dracula
   line-numbers = true
 [diff]
