@@ -1,6 +1,0 @@
-#!/bin/bash -ex
-
-cd ~/.vim
-rake
-
-exit 0
