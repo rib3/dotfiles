@@ -1,1 +1,14 @@
 **/*.md
+bin/chrome
+bin/cmdutils
+bin/json_compare
+bin/linux-secure-erase
+bin/rename_logs
+bin/safe-reattach-to-user-namespace # tmux on darwin
+bin/setup
+bin/update/
+bin/update_venv
+bin/vmsh
+goaccess/
+iterm2/
+scripts/
