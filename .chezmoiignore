@@ -6,7 +6,15 @@ bin/linux-secure-erase
 bin/rename_logs
 bin/safe-reattach-to-user-namespace # tmux on darwin
 bin/setup
-bin/update/
+{{- if ne .chezmoi.os "darwin" }}
+bin/update/macOS
+{{- end }}
+{{- if ne .chezmoi.osRelease.idLike "debian" }}
+bin/update/debian
+{{- end }}
+{{- if ne .chezmoi.osRelease.id "ubuntu" }}
+bin/update/ubuntu
+{{- end }}
 bin/update_venv
 bin/vmsh
 goaccess/
