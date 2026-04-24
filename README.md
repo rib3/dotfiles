@@ -3,7 +3,7 @@ configs
 
 Misc config files
 
-> Repo set up for [chezmoi](https://www.chezmoi.io/). Files follow chezmoi's naming conventions.
+Repo set up for [chezmoi](https://www.chezmoi.io/). Files follow it's naming conventions.
 
 ```
 .ackrc - http://beyondgrep.com/ and https://github.com/mileszs/ack.vim
