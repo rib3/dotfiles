@@ -5,10 +5,16 @@ Misc config files
 
 Repo set up for [chezmoi](https://www.chezmoi.io/). Files follow it's naming conventions.
 
-```
-.ackrc - http://beyondgrep.com/ and https://github.com/mileszs/ack.vim
-.gitconfig
-.inputrc - For anything that uses gnu readline (such as bash)
-.tmux.conf
-.vimrc.after - Vim config for after Janus runs. https://github.com/carlhuda/janus
-```
+## Some files
+
+| File | Notes |
+| --- | --- |
+| [`.gitconfig`](dot_gitconfig) | |
+| [`.inputrc`](dot_inputrc) | For anything that uses GNU readline (bash, etc) |
+| [`.profile`](dot_profile) | |
+| [`.bash_profile`](dot_bash_profile) | |
+| [`.tmux.conf`](dot_tmux.conf) | |
+| [`bin/git-stash-admin`](private_bin/executable_git-stash-admin) | Interactive stash browser (apply / drop / pop / diff) |
+| [`bin/update/debian`](private_bin/update/executable_debian) | `apt-get` update / dist-upgrade / clean / autoremove |
+| [`bin/update/ubuntu`](private_bin/update/executable_ubuntu) | Runs `update/debian` then `snap refresh` |
+| [`bin/update/macOS`](private_bin/update/executable_macOS) | `brew update` / `upgrade` / `upgrade --cask` / `doctor` |
