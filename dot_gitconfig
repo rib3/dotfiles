@@ -69,7 +69,7 @@
   rh = reset --hard
   rhu = reset --hard "@{upstream}"
   ro = rebase origin
-  rom = !git fetch && git rebase origin/master
+  roh = !git fetch && git rebase origin/HEAD
   rp = reset --patch
   ru = !git fetch && git rebase "@{upstream}"
   rui = !git fetch && git rebase -i "@{upstream}"
