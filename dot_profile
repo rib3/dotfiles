@@ -25,6 +25,11 @@ if hash delta 2>/dev/null; then
   export GIT_PAGER="delta"
 fi
 
+if hash difft 2>/dev/null; then
+  export GIT_EXTERNAL_DIFF="difft"
+  export DFT_DISPLAY="inline"
+fi
+
 if hash ag 2>/dev/null; then
   # ag uses .gitignore
   export FZF_DEFAULT_COMMAND='ag -g ""'
