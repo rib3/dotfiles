@@ -80,6 +80,8 @@
   sp = stash pop
   ss = stash show
   ssp = stash show --patch
+  # highlight single character changes, add before command `git subword <command>`
+  subword = "!f() { cmd=\"$1\"; shift; git \"$cmd\" --word-diff-regex='\\w' \"$@\"; }; f"
   sv = stash save
   svp = stash save --patch
   svu = stash save --include-untracked
