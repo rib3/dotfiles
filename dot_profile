@@ -26,7 +26,7 @@ if hash delta 2>/dev/null; then
 fi
 
 if hash difft 2>/dev/null; then
-  export GIT_EXTERNAL_DIFF="difft"
+  # export GIT_EXTERNAL_DIFF="difft"
   export DFT_DISPLAY="inline"
 fi
 
