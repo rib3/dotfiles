@@ -39,12 +39,15 @@
   du = diff @{upstream}
   dw = diff --word-diff
   f = fetch
+  fp = fetch --prune
   fco = !git fetch && git co
   fdom = !git fetch && git dom
   flom = !git fetch && git lom
   flpm = !git fetch && git lpm
   flsm = !git fetch && git lsm
   ft = fetch --tags # when a tag is updated
+  gone = !git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}'
+  gone-delete = !git gone | xargs git branch -D
   lo = log --oneline
   loh = !git lo origin/HEAD...
   lom = !git lo origin/master...
