@@ -21,6 +21,7 @@
   ci = commit
   cli = clean -di
   co = checkout
+  coh = !git checkout $(git head) && git pf
   cop = checkout --patch
   conb = checkout --no-track -b
   cou = git checkout @{upstream}
@@ -48,6 +49,7 @@
   ft = fetch --tags # when a tag is updated
   gone = !git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}'
   gone-delete = !git gone | xargs git branch -D
+  head = !git symbolic-ref --short refs/remotes/origin/HEAD | sed 's{^origin/{{'
   lo = log --oneline
   loh = !git lo origin/HEAD...
   lom = !git lo origin/master...
@@ -59,7 +61,7 @@
   ls = log --stat
   lsm = !git ls origin/master...
   lsu = !git ls @{upstream}...
-  m = !git checkout master && git pull
+  m = !echo 'using coh\n' && git coh
   mbc = !git m && git branch-clean
   mm = !git fetch && git merge --no-ff origin/master
   mnf = merge --no-ff
