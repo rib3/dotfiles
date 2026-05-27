@@ -47,7 +47,7 @@
   flpm = !git fetch && git lpm
   flsm = !git fetch && git lsm
   ft = fetch --tags # when a tag is updated
-  gone = !git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}'
+  gone = !git fp && git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}'
   gone-delete = !git gone | xargs git branch -D
   head = !git symbolic-ref --short refs/remotes/origin/HEAD | sed 's{^origin/{{'
   lo = log --oneline
