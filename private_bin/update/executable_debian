@@ -3,6 +3,6 @@ set -ueo pipefail
 
 apt-get update
 apt-get -dy dist-upgrade
-apt-get dist-upgrade
+apt-get "${@}" dist-upgrade
 apt-get clean
 apt-get autoremove
